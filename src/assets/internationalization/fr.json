@@ -1,0 +1,87 @@
+﻿{
+  "en": "Anglais",
+  "fr": "Français",
+  "LOGIN":{
+    "WELCOME":"BIENVENU"
+  },
+  "HEADER": {
+    "SIGNOUT": "Se déconnecter",
+    "LANGUAGE": "Langue",
+    "REMOVE": "Supprimer",
+    "ADD": "Ajouter",
+    "ISREQUIRED":"  est nécessaire ",
+    "ACTION":"Action",
+    "SELECT":"sélectionner"
+   },
+   "COMPANY": {
+    "TITLE": "Entreprise",
+    "NAME": "Nom",
+    "ADDRESS": "Adresse",
+    "lOCAL":"locaux",
+    "COMPANYSUCCESSTITLE":"Ajouter entreprise terminé",
+    "COMPANYSUCCESSBODY":"Votre ajout est terminé",
+    "COMPANYERREURBODY":"Une erreur s'est produite lors de l'ajout",
+    "PASSWORD":"Mot de passe"
+  }  ,
+  "CALENDAR": {
+   "TITLE": "Calendrier",
+   "DATE": "Date",
+   "EMPLOYED": "Employé",
+   "COMPANY":"Entreprise",
+   "CALENDARSUCCESSTITLE":"Ajouter calendrier terminé",
+   "CALENDARSUCCESSBODY":"Votre ajout est terminé",
+   "CALENDARERREURBODY":"Une erreur s'est produite lors de l'ajout"
+ }  ,
+ "PRODUCT":{
+  "TITLE":"Produit",
+  "Name":"Nom",
+  "PRODUCTSUCCESSTITLE":"Ajouter produit terminé",
+  "PRODUCTSUCCESSBODY":"Votre ajout est terminé",
+  "PRODUCTERREURBODY":"Une erreur s'est produite lors de l'ajout"
+ } ,
+ "MEMBER":{
+  "TITLE":"Membre",
+  "NAME":"Nom",
+  "USERNAME":"Pseudo",
+  "ADDRESS":"Adresse",
+  "EMAIL":"Email",
+  "EMAILVALID":"L'email doit être une adresse e-mail valide",
+  "PASSWORD":"Mot de passe",
+  "PASSWORDVALID":"Le mot de passe doit être au moins de 6 caractères",
+  "MEMBERSUCCESSTITLE":"Ajouter membre terminé",
+  "MEMBERSUCCESSBODY":"Votre ajout est terminé",
+  "MEMBERERREURBODY":"Une erreur s'est produite lors de l'ajout"
+ },
+ "FICHE":{
+  "TITLE":"Fiche  ",
+  "RESPONSIBLENAME":"Nom responsable  ",
+  "UNCERTICIDE":"incerticide",
+  "SUPERVISORNAME":"Nom  encadreur",
+  "OBSERVATIONS":"observations",
+  "ARRIVALTIME":"heure d'arivée",
+  "DEPARTURETIME":"heure départ",
+  "FICHESUCCESSTITLE":"Ajouter fiche terminé",
+  "FICHESUCCESSBODY":"Votre ajout est terminé",
+  "FICHEERREURBODY":"Une erreur s'est produite lors de l'ajout"
+ },
+ "lOCAL":{
+  "lOCALSUCCESSTITLE":"Ajouter local terminé",
+  "lOCALSUCCESSBODY":"Votre ajout est terminé",
+  "lOCALERREURBODY":"Une erreur s'est produite lors de l'ajout"
+ },"DERATIZATION":{
+   "TITLE":"Deratisation",
+   "DERATIZATIONSUCCESSTITLE":"Ajouter deratisation terminé",
+   "DERATIZATIONSUCCESSBODY":"Votre ajout est terminé",
+   "DERATIZATIONERREURBODY":"Une erreur s'est produite lors de l'ajout"
+ 
+ },"DISINESCTION":{
+  "TITLE":"Désinsectisation",
+  "DERATIZATIONSUCCESSTITLE":"Ajouter Désinsectisation terminé",
+  "DERATIZATIONSUCCESSBODY":"Votre ajout est terminé",
+  "DERATIZATIONERREURBODY":"Une erreur s'est produite lors de l'ajout"
+
+}
+ 
+
+
+}

@@ -1,0 +1,85 @@
+﻿{
+  "en": "English",
+  "fr": "French",
+  "LOGIN":{
+    "WELCOME":"WELCOME"
+  },
+  "HEADER": {
+    "SIGNOUT": "Se déconnecter",
+    "LANGUAGE": "Langue",
+    "REMOVE": "Remove",
+    "ADD": "Add",
+    "ISREQUIRED":"is required",
+    "ACTION":"Action",
+    "SELECT":"select"
+  },
+  "COMPANY": {
+    "TITLE": "Company",
+    "NAME": "Name",
+    "ADDRESS": "Address",
+    "lOCAL":"locals",
+    "COMPANYSUCCESSTITLE":"End of add company",
+    "COMPANYSUCCESSBODY":"End of your adding",
+    "COMPANYERREURBODY":"An error occured when adding company",
+    "PASSWORD":"Password"
+  },
+  "CALENDAR": {
+   "TITLE": "Calendar",
+   "DATE": "Date",
+   "EMPLOYED": "Employed",
+   "COMPANY":"Company",
+   "CALENDARSUCCESSTITLE":"End of add calendar",
+   "CALENDARSUCCESSBODY":"End of your adding",
+   "CALENDARERREURBODY":"An error occured when adding calendar"
+ }, 
+ "PRODUCT":{
+  "TITLE":"Product",
+  "Name":"Name",
+  "PRODUCTSUCCESSTITLE":"End of add product",
+  "PRODUCTSUCCESSBODY":"End of your adding",
+  "PRODUCTERREURBODY":"An error occured when adding product"
+ } , 
+ "MEMBER":{
+  "TITLE":"Member",
+  "NAME":"Name",
+  "USERNAME":"Username",
+  "ADDRESS":"Address",
+  "EMAIL":"Email",
+  "EMAILVALID":"Email must be a valid email address",
+  "PASSWORD":"Password",
+  "PASSWORDVALID":"Password must be at least 6 characters",
+  "MEMBERSUCCESSTITLE":"End of add member",
+  "MEMBERSUCCESSBODY":"End of your adding",
+  "MEMBERERREURBODY":"An error occured when adding member"
+ } ,
+ "FICHE":{
+  "TITLE":"Payement bill",
+  "RESPONSIBLENAME":"Responsible name",
+  "UNCERTICIDE":"uncerticide",
+  "SUPERVISORNAME":"Supervisor name",
+  "OBSERVATIONS":"observations",
+  "ARRIVALTIME":"arrival time",
+  "DEPARTURETIME":"departure time",
+  "FICHESUCCESSTITLE":"End of add fiche",
+  "FICHESUCCESSBODY":"End of your adding",
+  "FICHEERREURBODY":"An error occured when adding fiche"
+ },
+ "lOCAL":{
+  "lOCALSUCCESSTITLE":"End of add local",
+  "lOCALSUCCESSBODY":"End of your adding",
+  "lOCALERREURBODY":"An error occured when adding local"
+ },"DERATIZATION":{
+  "TITLE":"Deratization",
+  "DERATIZATIONSUCCESSTITLE":"End of add deratization",
+  "DERATIZATIONSUCCESSBODY":"End of your adding",
+  "DERATIZATIONERREURBODY":"An error occured when adding deratization"
+
+},"DISINESCTION":{
+  "TITLE":"Disinsection",
+  "DERATIZATIONSUCCESSTITLE":"End of add disinsection",
+  "DERATIZATIONSUCCESSBODY":"End of your adding",
+  "DERATIZATIONERREURBODY":"An error occured when adding Disinsection"
+
+}
+
+} 
