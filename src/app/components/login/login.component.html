@@ -1,1 +1,66 @@
-<p>login works!</p>
+<div class="container-fluid no-padding h-100">
+    <div class="row flex-row h-100 bg-white">
+      <div class="col-xl-3 col-lg-5 col-md-5 col-sm-12 col-12 no-padding">
+        <div class="elisyam-bg background-03">
+          <div class="elisyam-overlay overlay-08"></div>
+          <div class="authentication-col-content-2 mx-auto text-center">
+            <div class="logo-centered">
+              <a href="db-default.html">
+                <img src="../../assets/assets/img/logo-big.png" alt="logo">
+              </a>
+            </div>
+            <h1> {{ 'LOGIN.WELCOME' | translate }}</h1>
+            <span class="description">
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-9 col-lg-7 col-md-7 col-sm-12 col-12 my-auto no-padding">
+        <div class="authentication-form-2 mx-auto">
+           <div class="tab-content" id="animate-tab-content">
+              <div role="tabpanel" class="tab-pane show active" id="singin" aria-labelledby="singin-tab">
+                <div *ngIf="isLoggedIn; else loggedOut">
+                  Logged in as {{roles}}.
+                </div>
+  
+                <ng-template #loggedOut>
+                  <div class="row col-sm-6" style="max-width:350px;">
+                    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                      <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
+                          required />
+                        <!-- <div *ngIf="f.submitted && username.invalid">
+                          <div *ngIf="username.errors.required">Username is required</div>
+                        </div> -->
+                      </div>
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
+                          required minlength="6" />
+                        <!-- <div *ngIf="f.submitted && password.invalid">
+                          <div *ngIf="password.errors.required">Password is required</div>
+                          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                        </div> -->
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-primary">Login</button>
+                        <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+                          Login failed: {{errorMessage}}
+                        </div>
+                      </div>
+                    </form>
+                    <hr />
+  
+                  </div>
+                </ng-template>
+  
+              </div>
+            </div>
+        </div>
+  
+    </div>
+  </div>
+  
+  
+  

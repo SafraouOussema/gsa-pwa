@@ -1,1 +1,57 @@
-<p>home works!</p>
+
+<div *ngIf="info.token; else loggedOut">
+    <!-- <h5 class="text-primary">Your Information</h5>
+    <p>
+      <strong>Username:</strong> {{info.username}}<br/>
+      <strong>Roles:</strong> {{info.authorities}}<br />
+      <strong>Token:</strong> {{info.token}}.
+    </p>
+    <button class="btn btn-secondary" (click)="logout()">Logout</button> -->
+  
+    home page
+
+    <!-- <table class="table table-striped "  [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder" [mfData]="niveaus" #mf="mfDataTable" [mfRowsOnPage]="5">
+      <thead>
+      <tr>
+        <th style="width: 10%">
+          <mfDefaultSorter by="[3]">  enreprise </mfDefaultSorter>
+        </th> 
+        <th style="width: 10%">
+          <mfDefaultSorter by="nom">  action </mfDefaultSorter>
+        </th> 
+      </tr>
+      </thead>
+      <tbody>
+  
+      <tr *ngFor="let fich of mf.data">
+  
+        <td >{{fich[3]}}</td>
+        
+         
+        <td> <a mat-button [routerLink]="['template/fiche', fich[0],fich[2],fich[4]]"> ajouter fiche</a></td>
+        <td> <a mat-button [routerLink]="['template/FicheEntreprise', fich[0]]"> exporter fiche</a></td>
+  
+  
+      </tr>
+  
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="3">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+      </tfoot>
+  
+    </table> -->
+  </div>
+   
+  <ng-template #loggedOut>
+    Please login.
+  
+  
+  </ng-template>
+  
+  
+  
+  

@@ -4,13 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment'; 
+import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // import ngx-translate and the http loader
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient, HttpClientModule} from '@angular/common/http'; 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { QRCodeModule } from 'angularx-qrcode';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -29,7 +29,26 @@ import { CompanyFicheComponent } from './components/company-fiche/company-fiche.
 import { DeratisationComponent } from './components/deratisation/deratisation.component';
 import { DesinsectisationComponent } from './components/desinsectisation/desinsectisation.component';
 import { FicheComponent } from './components/fiche/fiche.component';
+import { TemplateComponent } from './components/template/template.component';
 
+
+import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { httpInterceptorProviders } from './components/auth/auth-interceptor';
+
+
+import { ToasterModule, ToasterService } from 'angular2-toaster';
+
+
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { CalendarModule } from 'primeng/calendar';;
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -47,22 +66,34 @@ import { FicheComponent } from './components/fiche/fiche.component';
     CompanyFicheComponent,
     DeratisationComponent,
     DesinsectisationComponent,
-    FicheComponent
+    FicheComponent,
+    TemplateComponent
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     HttpClientModule,
     FontAwesomeModule,
+    FormsModule,
+    ToasterModule,
     QRCodeModule,
+    TableModule,
+    ToastModule,
+    CalendarModule,
+    MultiSelectModule,
+    ContextMenuModule,
+    DialogModule,
+    ButtonModule,
+    DropdownModule,
+    InputTextModule,
     BrowserAnimationsModule, // required animations module
     NgxSmartModalModule.forRoot(),
     ToastrModule.forRoot(), // ToastrModule added
     TranslateModule.forRoot({
-        loader: {
-            provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
-        }
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
     }),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -72,7 +103,7 @@ import { FicheComponent } from './components/fiche/fiche.component';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [httpInterceptorProviders, ToasterService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

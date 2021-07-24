@@ -4,11 +4,15 @@ const TOKEN_KEY = 'AuthToken';
 const USERNAME_KEY = 'AuthUsername';
 const AUTHORITIES_KEY = 'AuthAuthorities';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
   private roles: Array<string> = [];
+
+  private item : string ;
+
   constructor() { }
 
   signOut() {
@@ -20,7 +24,7 @@ export class TokenStorageService {
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
 
-  public getToken(): string {
+  public getToken(): any {
     return sessionStorage.getItem(TOKEN_KEY);
   }
 
@@ -29,7 +33,7 @@ export class TokenStorageService {
     window.sessionStorage.setItem(USERNAME_KEY, username);
   }
 
-  public getUsername(): string {
+  public getUsername(): any {
     return sessionStorage.getItem(USERNAME_KEY);
   }
 
@@ -38,11 +42,11 @@ export class TokenStorageService {
     window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
   }
 
-  public getAuthorities(): string[] {
+  public getAuthorities(): any[] {
     this.roles = [];
 
-    if (sessionStorage.getItem(TOKEN_KEY)) {
-      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(authority => {
+    if (sessionStorage.getItem(TOKEN_KEY)) { 
+      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)|| '{}').forEach( (authority: any) => {
         this.roles.push(authority.authority);
       });
     }
