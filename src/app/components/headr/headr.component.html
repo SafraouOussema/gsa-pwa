@@ -1,1 +1,154 @@
-<p>headr works!</p>
+<!-- <nav class="navbar navbar-inverse navbar-default" id="mainMenu">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" routerLink="" (click)="clearSearch()">
+                <img src="/assets/header/spperm-logo.png" class="logo" /> SPPERMISSION
+            </a>
+            <a href="/assets/user-guide/GADES - Guide utilisateur.pdf" class="user-guide" target="_blank" matTooltip="{{ 'HEADER.TOOLTIPUSERGUIDE' | translate }}"
+                [matTooltipPosition]="position">
+                <span class="fa fa-info-circle"></span>
+            </a>
+        </div>
+        <div id="navbar" class="navbar-right navbar-collapse collapse">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <select #langSelect (change)="changeLanguage(langSelect.value)">
+                        <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
+                            {{ lang | translate }}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="username">{{username}}</label>
+                    <button type="submit" class="btn btn-default btn-sm btn-warning" (click)="toggleLogout()">{{ 'HEADER.SIGNOUT' | translate }}</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</nav>
+<nav class="navbar navbar-default" id="subMenu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-11">
+                <form class="navbar-form" id="subNav">
+                    <div class="input-group">
+                        <input type="search" class="form-control" placeholder="{{ 'HEADER.SEARCHTEXT' | translate }}" [value]="searchValue" #box
+                            (keyup.enter)="onEnter(box.value)" data-toggle="tooltip" data-placement="bottom" data-container="body"
+                            title="{{ 'HEADER.SEARCHTEXT' | translate }}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" (click)="onEnter(box.value)">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4 col-xs-12 pull-right">
+                <div class="btn-group navbar-form" role="group" aria-label="Actions">
+                    <button type="button" class="btn btn-default" (click)="toggleMySites()" matTooltip="{{ 'HEADER.TOOLTIPMYSITES' | translate }}"
+                        [matTooltipPosition]="position">{{ 'HEADER.MySites' | translate }}</button>
+                    <button type="button" class="btn btn-default" (click)="toggleExportToExcel()" [disabled]="!exportEnabled" matTooltip="{{ 'HEADER.TOOLTIPEXPORT' | translate }}"
+                        [matTooltipPosition]="position">{{ 'HEADER.EXPORTBUTTON' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav> -->
+
+<!-- Begin Header -->
+<header class="header">
+    <nav class="navbar fixed-top">
+      <!-- Begin Search Box-->
+  
+      <!-- End Search Box-->
+  
+      <!-- Begin Topbar -->
+      <div class="navbar-holder d-flex align-items-center align-middle justify-content-between">
+        <!-- Begin Logo -->
+        <div class="navbar-header">
+          <a class="navbar-brand pointer">
+            <div class="brand-image brand-big">
+              <img src="../../assets/logo.jpg" width="50" height="50" alt="logo" class="logo-small">
+            </div>
+            <div class="brand-image brand-small">
+              <!-- <img src="./assets/assets/img/logo.png" alt="logo" class="logo-small"> -->
+              <img src="../../assets/logo.jpg" width="50" height="50"  alt="logo" class="logo-small">
+            </div>
+          </a>
+          <!-- Toggle Button -->
+          <a id="toggle-btn" class="menu-btn pointer" (click)="onOpen()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+          <!-- End Toggle -->
+        </div>
+        <!-- End Logo -->
+        <!-- Begin Navbar Menu -->
+        <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center pull-right">
+          <!-- Begin Search -->
+  
+          <!-- End Search -->
+          <!-- Begin Notifications -->
+          <li (click)="onOpenUserDetail()" class="nav-item dropdown">
+            <a id="notifications" rel="nofollow" data-target="#" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" class="nav-link">
+              <i class="la la-user"></i>
+            </a>
+            <ul aria-labelledby="notifications" class="dropdown-menu notification">
+              <div *ngIf="info.token">
+                <li>
+                  <div class="notifications-header">
+                    <div class="title"> </div>
+                    <img src="../../../assets/assets/img/notifications/01.jpg" alt="..." class="img-fluid">
+                  </div>
+                </li>
+                <li>
+                  <a href="app-mail.html" class="dropdown-item">
+                    {{info.username}}
+                  </a>
+              </li>
+                <li>
+                  <a href="app-mail.html" class="dropdown-item">
+                    <div *ngIf="info.authorities == 'ROLE_ADMIN' "> Admin</div>
+                  </a>
+              </li>
+  
+                <li>
+                  <a rel="nofollow" (click)="toggleLogout()" href="#" class="dropdown-item all-notifications text-center">
+                    <i class="ti-power-off"></i>
+                  </a>
+                </li>
+              </div>
+  
+  
+               <div class="message-body">
+                            <div class="message-body-heading">
+                            <div *ngFor="let lang of translate.getLangs()">
+                                <div class="custom-control custom-radio styled-radio mb-3">
+                                    <input class="custom-control-input" type="radio" name="optionss" id="{{lang}}"
+                                    [checked]=" lang === translate.currentLang "
+                                    [value]="lang" (change)="changeLanguage(lang)">
+                                    <label class="custom-control-descfeedback"
+                                        for="{{lang}}">{{ lang | translate }}</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+  
+  
+            </ul>
+          </li>
+          <!-- End Notifications -->
+  
+  
+          <!-- <li class="nav-item"><a href="#off-canvas" class="open-sidebar-user"><i class="la la-ellipsis-h"></i></a></li> -->
+        </ul>
+        <!-- End Navbar Menu -->
+      </div>
+      <!-- End Topbar -->
+    </nav>
+  </header>
+  <!-- End Header -->
+  

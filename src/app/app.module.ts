@@ -50,6 +50,13 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 
+
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient, "/assets/internationalization/", ".json");
+}
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,7 +115,4 @@ import { InputTextModule } from 'primeng/inputtext';
 })
 export class AppModule { }
 
-// required for AOT compilation
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
-}
+ 

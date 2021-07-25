@@ -1,1 +1,134 @@
-<p>company works!</p>
+<div class="row">
+    <div class="page-header">
+        <div class="d-flex align-items-center">
+            <h2 class="page-header-title">{{ 'COMPANY.TITLE' | translate }}</h2>
+            <div>
+                <!-- <ul class="breadcrumb">
+            <li class="breadcrumb-item">home</li><h2>{{ 'COMPANY.TITLE' | translate }} <h2>
+            <li class="breadcrumb-item"><i class="ti ti-home"></i></li>
+          </ul> -->
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<div class="row flex-row">
+    <div class="my-sites-component col-md-12">
+        <div class="widget widget-07 has-shadow">
+            <div class="widget-header">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div id="sorting-table_filter" class="dataTables_filter">
+                            <div class=" faq">
+                                <div class="searchbox">
+                                    <input class="teamsfox-text" type="text" (keyup)='search($event.target.value)'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="widget-options teamsfox-icon pointer">
+                            <i (click)="ngxSmartModalService.getModal('myModal').open()"
+                                class="teamsfox-icon la la-plus-circle la-3x">
+                            </i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive table-scroll padding-right-10" style="max-height: 690px">
+
+                <p-table #dt2 [value]="filterData" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                    currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
+                    [globalFilterFields]="['label','address']" [rowsPerPageOptions]="[10,25,50]">
+                    <ng-template pTemplate="caption">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button pButton label="{{ 'Users.Clear' | translate}} " class="p-button-outlined"
+                                    icon="pi pi-filter-slash" (click)="clear(dt2)"></button>
+                            </div>
+                            <div class="col-md-3 offset-md-6" style="text-align: right;">
+                                <span class="p-input-icon-left p-ml-auto">
+                                    <i class="pi pi-search"></i>
+                                    <input pInputText type="text"
+                                        (input)="dt2.filterGlobal($event.target.value, 'contains')"
+                                        placeholder="Search" />
+                                </span>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="label">{{ 'COMPANY.NAME' | translate }}<p-sortIcon field="label">
+                                </p-sortIcon>
+                            </th>
+                            <th pSortableColumn="address"> {{ 'COMPANY.ADDRESS' | translate }} <p-sortIcon field="address"></p-sortIcon>
+                            </th>
+                            <th> list fiche </th>
+                            <th> {{ 'HEADER.ADD' | translate }} </th>
+                            <th> {{ 'HEADER.REMOVE' | translate }} </th>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-file>
+                        <tr>
+                            <td>{{file.label}}</td>
+                            <td>{{file.address}}</td>
+                            <td>
+                                <a mat-button [routerLink]="['template/fiche', file.id]">
+                                    liste fiche
+                                </a>
+                            </td>
+
+                            <td>
+                                <a mat-button [routerLink]="['template/locaux', file.id]">
+                                    {{ 'HEADER.ADD' | translate }} {{ 'COMPANY.lOCAL' | translate }}
+                                </a>
+                            </td>
+
+                            <td>
+
+                                <a (click)="remove(file.id)"><i class="la la-close delete"></i></a>
+                            </td>
+
+                        </tr>
+                    </ng-template>
+                </p-table>
+ 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<ngx-smart-modal #myModal identifier="myModal">
+    <h1> {{ 'HEADER.ADD' | translate }} {{ 'COMPANY.TITLE' | translate }} </h1>
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="form-group">
+            <label for="label"> {{ 'COMPANY.NAME' | translate }} {{ 'COMPANY.TITLE' | translate }} </label>
+            <input type="text" class="form-control" name="label" [(ngModel)]="form.label" #label="ngModel" required />
+            <div *ngIf="f.submitted && label.invalid">
+                <div *ngIf="label.errors.required">{{ 'COMPANY.ADD' | translate }} {{ 'HEADER.ISREQUIRED' | translate }}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="address"> {{ 'COMPANY.ADDRESS' | translate }} </label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="form.address" #address="ngModel"
+                required />
+            <div *ngIf="f.submitted && address.invalid">
+                <div *ngIf="address.errors.required">{{ 'COMPANY.ADDRESS' | translate }} {{ 'HEADER.ISREQUIRED' |
+                    translate }} </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">{{ 'HEADER.ADD' | translate }}</button>
+            <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                erreur!<br />{{errorMessage}}
+            </div>
+        </div>
+    </form>
+</ngx-smart-modal>

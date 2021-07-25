@@ -29,6 +29,7 @@
     "@sweetalert2/ngx-sweetalert2": "^10.0.0",
     "angular2-toaster": "^11.0.1",
     "angularx-qrcode": "^11.0.0",
+    "jquery": "^3.6.0",
     "jspdf": "^2.3.1",
     "jspdf-autotable": "^3.5.15",
     "ngx-smart-modal": "^7.4.1",
@@ -36,6 +37,7 @@
     "primeicons": "^4.1.0",
     "primeng": "^11.4.2",
     "rxjs": "^6.6.7",
+    "save": "^2.4.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },
