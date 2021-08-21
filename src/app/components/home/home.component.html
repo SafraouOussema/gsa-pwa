@@ -29,21 +29,7 @@
               <p-table #dt2 [value]="niveaus" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
                 currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
                 [globalFilterFields]="['[3]' ]" [rowsPerPageOptions]="[10,25,50]">
-                <!-- <ng-template pTemplate="caption">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <button pButton label="{{ 'Users.Clear' | translate}} " class="p-button-outlined"
-                        icon="pi pi-filter-slash" (click)="clear(dt2, gb)"></button>
-                    </div>
-                    <div class="col-md-3 offset-md-6" style="text-align: right;">
-                      <span class="p-input-icon-left p-ml-auto">
-                        <i class="pi pi-search"></i>
-                        <input pInputText type="text" #gb (input)="dt2.filterGlobal($event.target.value, 'contains')"
-                          placeholder="Search" />
-                      </span>
-                    </div>
-                  </div>
-                </ng-template> -->
+               
 
                 <ng-template pTemplate="header">
                   <tr>
@@ -58,10 +44,9 @@
                   <tr>
                     <td>{{file[3]}}</td>
 
-                    <td> <a mat-button [routerLink]="['template/fiche', file[0],file[2],file[4]]"> ajouter fiche</a>
-                    </td>
+                    <td> <a mat-button [routerLink]="['template/fiche', file[0],file[2],file[4]]"> ajouter fiche</a> </td>
                     <td> <a mat-button [routerLink]="['template/exportfiche', file[0]]"> exporter fiche</a></td>
- 
+                    <td> <a mat-button [routerLink]="['template/scanqrcode',  file[0],file[2],file[4]]"> scan qrcode  </a></td>
                   </tr>
                 </ng-template>
               </p-table>

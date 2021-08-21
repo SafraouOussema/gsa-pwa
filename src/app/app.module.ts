@@ -51,6 +51,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext'; 
 import {ToolbarModule} from 'primeng/toolbar';
 import { ExportFicheComponent } from './components/export-fiche/export-fiche.component';
+import { NgQrScannerModule } from 'angular2-qrscanner';
+import { ScanQrcodeComponent } from './components/scan-qrcode/scan-qrcode.component';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -76,7 +78,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     DesinsectisationComponent,
     FicheComponent,
     TemplateComponent,
-    ExportFicheComponent
+    ExportFicheComponent,
+    ScanQrcodeComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +98,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     DropdownModule,
     InputTextModule,
     ToolbarModule,
+    NgQrScannerModule,
     BrowserAnimationsModule, // required animations module
     NgxSmartModalModule.forRoot(),
     ToastrModule.forRoot(), // ToastrModule added
