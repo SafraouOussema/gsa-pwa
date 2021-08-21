@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "gsapwabuild": "ng build --prod --output-hashing=none",
+    "gsapwaprod": "npm run gsapwabuild && cd dist/gsa-pwa && http-server -c-1"
   },
   "private": true,
   "dependencies": {
