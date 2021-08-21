@@ -8,6 +8,7 @@ import {UserService} from '../../service/user.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { ToasterService } from 'angular2-toaster';
 import { TranslateService } from '@ngx-translate/core';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-calendar',
@@ -131,11 +132,13 @@ export class CalendarComponent implements OnInit {
 
   }
 
-
-  clear(table: any) {
+  clear(table: Table, globalFilter) {
+    globalFilter.value = null;
+    table.filters.global = {
+        value: null,
+        matchMode: 'contains'
+    }
     table.clear();
-  
   }
-
 
 }

@@ -30,12 +30,7 @@
             </i><span>{{ 'COMPANY.TITLE' | translate }}</span>
           </a>
         </li>
-        <!-- user -->
-        <li *ngIf="authority === 'admin' ">
-          <a routerLink="signup"><i class="la la-user-plus">
-            </i><span>ajouter membre</span>
-          </a>
-        </li>
+        
    <!-- users -->
    <li *ngIf="authority === 'admin' ">
     <a routerLink="users"><i class="la la-user-plus">

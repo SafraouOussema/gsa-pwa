@@ -4,6 +4,8 @@ import { TokenStorageService } from '../auth/token-storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CalendarService } from '../../service/calendar.service';
 import { DatePipe } from '@angular/common';
+import { Table } from 'primeng/table';
+
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,7 @@ export class HomeComponent implements OnInit {
     private router: Router
   ) { }
 
- 
+  
   ngOnInit() {
     let myDate = new Date()
     let k = this.datepipe.transform(myDate, 'yyyy-MM-dd');
@@ -46,5 +48,14 @@ export class HomeComponent implements OnInit {
   logout() {
     this.token.signOut();
     window.location.reload();
+  }
+
+  clear(table: Table, globalFilter) {
+    globalFilter.value = null;
+    table.filters.global = {
+        value: null,
+        matchMode: 'contains'
+    }
+    table.clear();
   }
 }

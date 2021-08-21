@@ -48,8 +48,9 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
-import { InputTextModule } from 'primeng/inputtext';
-
+import { InputTextModule } from 'primeng/inputtext'; 
+import {ToolbarModule} from 'primeng/toolbar';
+import { ExportFicheComponent } from './components/export-fiche/export-fiche.component';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -74,7 +75,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     DeratisationComponent,
     DesinsectisationComponent,
     FicheComponent,
-    TemplateComponent
+    TemplateComponent,
+    ExportFicheComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +94,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ButtonModule,
     DropdownModule,
     InputTextModule,
+    ToolbarModule,
     BrowserAnimationsModule, // required animations module
     NgxSmartModalModule.forRoot(),
     ToastrModule.forRoot(), // ToastrModule added

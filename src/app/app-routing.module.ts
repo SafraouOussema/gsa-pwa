@@ -18,6 +18,7 @@ import { DeratisationComponent } from './components/deratisation/deratisation.co
 import {TemplateComponent} from './components/template/template.component';
 import {CompanyFicheComponent} from './components/company-fiche/company-fiche.component';
  import {   UsersFicheComponent } from './components/users-fiche/users-fiche.component';
+ import {    ExportFicheComponent } from './components/export-fiche/export-fiche.component';
 
 
 const routes: Routes = [
@@ -48,10 +49,10 @@ const routes: Routes = [
           path: 'produit',
           component: ProduitComponent
         },
-        // {
-        //   path:'home/template/FicheEntreprise/:calanderid',
-        //   component: FicheEntrepriseComponent
-        // },
+          {
+          path:'home/template/exportfiche/:calanderid',
+            component: ExportFicheComponent
+         },
         {
           path: 'home/template/fiche/:calanderid/:companyid/:userid',
           component: FicheComponent
