@@ -54,6 +54,10 @@ import { ExportFicheComponent } from './components/export-fiche/export-fiche.com
 import { NgQrScannerModule } from 'angular2-qrscanner';
 import { ScanQrcodeComponent } from './components/scan-qrcode/scan-qrcode.component';
 
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
+
+
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, "/assets/internationalization/", ".json");
@@ -99,6 +103,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     InputTextModule,
     ToolbarModule,
     NgQrScannerModule,
+    ZXingScannerModule,
     BrowserAnimationsModule, // required animations module
     NgxSmartModalModule.forRoot(),
     ToastrModule.forRoot(), // ToastrModule added

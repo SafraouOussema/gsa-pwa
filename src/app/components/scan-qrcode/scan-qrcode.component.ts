@@ -32,8 +32,8 @@ export class ScanQrcodeComponent implements OnInit {
     userId: any;
     calender: any;
     local: any;
-    date:any;
-    findLocal:any;
+    date: any;
+    findLocal: any;
 
     constructor(private router: Router,
         private route: ActivatedRoute,
@@ -87,59 +87,64 @@ export class ScanQrcodeComponent implements OnInit {
     }
 
 
-    ngAfterViewInit(): void {
+    // ngAfterViewInit(): void {
 
-        this.qrScannerComponent.getMediaDevices().then(devices => {
-            console.log(devices);
-            const videoDevices: MediaDeviceInfo[] = [];
-            for (const device of devices) {
-                if (device.kind.toString() === 'videoinput') {
-                    videoDevices.push(device);
-                }
-            }
-            if (videoDevices.length > 0) {
-                let choosenDev;
-                for (const dev of videoDevices) {
-                    if (dev.label.includes('front')) {
-                        choosenDev = dev;
-                        break;
-                    }
-                }
-                if (choosenDev) {
-                    this.qrScannerComponent.chooseCamera.next(choosenDev);
-                } else {
-                    this.qrScannerComponent.chooseCamera.next(videoDevices[0]);
-                }
-            }
-        });
+    //     this.qrScannerComponent.getMediaDevices().then(devices => {
+    //         console.log(devices);
+    //         const videoDevices: MediaDeviceInfo[] = [];
+    //         for (const device of devices) {
+    //             if (device.kind.toString() === 'videoinput') {
+    //                 videoDevices.push(device);
+    //             }
+    //         }
+    //         if (videoDevices.length > 0) {
+    //             let choosenDev;
+    //             for (const dev of videoDevices) {
+    //                 if (dev.label.includes('front')) {
+    //                     choosenDev = dev;
+    //                     break;
+    //                 }
+    //             }
+    //             if (choosenDev) {
+    //                 this.qrScannerComponent.chooseCamera.next(choosenDev);
+    //             } else {
+    //                 this.qrScannerComponent.chooseCamera.next(videoDevices[0]);
+    //             }
+    //         }
+    //     });
 
-        this.qrScannerComponent.capturedQr.subscribe(result => {
-            console.log(result);
-            this.addScanQrCode(result);
-        });
+    //     this.qrScannerComponent.capturedQr.subscribe(result => {
+    //         console.log(result);
+    //         this.addScanQrCode(result);
+    //     });
+    // }
+
+
+    onCodeResult(result: string) {
+
+        console.log(result);
+        this.addScanQrCode(result)
     }
 
-    addScanQrCode(value){
+
+
+
+    addScanQrCode(value) {
         console.log(value);
 
-        let date =new Date();
+        let date = new Date();
+ 
+        console.log("user id", this.userId);
 
+        console.log("calendar   id", this.calendarId);
+        console.log("date", date);
 
-
-        console.log("user id",this.userId);
-
-        console.log( "calendar   id",this.calendarId);
-        console.log("date",date);
-
-        let find  = this.local.filter(local => local.name == value );
-        if(find.length >0){
-            this.findLocal = find[0].name ;
+        let find = this.local.filter(local => local.name == value);
+        if (find.length > 0) {
+            this.findLocal = find[0].name;
         }
-       
-        console.log("find Local",this.findLocal);
 
-
-
+        console.log("find Local", this.findLocal); 
 
     }
 
