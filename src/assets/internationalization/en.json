@@ -1,86 +1,101 @@
 ﻿{
   "en": "English",
   "fr": "French",
-  "LOGIN":{
-    "WELCOME":"WELCOME"
+  "LOGIN": { 
+    "TITLE": "Login",
+    "EMAIL": "UserName",
+    "PASSWORD": "Password",
+    "LOGINBUTTON": "Login",
+    "EMAILMISSING": "Email is required",
+    "PASSWORDMISSING": "Password is required",
+    "ALERTLOGIN": "Email and/or Password incorrect.",
+    "WELCOME": "GSA", 
+    "USERPERMISSIONTITLE": "Error",
+    "USERPERMISSIONBODY": "You don't have permission to access those information",
+    "YOURSESSIONEXPRIEDBODY": "Your session expired",
+    "SESSIONEXPIREDTITLE": "Session expired",
+    "INVALIDLOGINTITLE": "Invalid login.",
+    "INVALIDLOGINBODY": "Invalid login. Please try again.",
+    "EMAILISREQUIRED": "Email is required",
+    "VALIDEMAIL": "Please provide a valid email address"
   },
   "HEADER": {
     "SIGNOUT": "Se déconnecter",
     "LANGUAGE": "Langue",
     "REMOVE": "Remove",
     "ADD": "Add",
-    "ISREQUIRED":"is required",
-    "ACTION":"Action",
-    "SELECT":"select"
+    "ISREQUIRED": "is required",
+    "ACTION": "Action",
+    "SELECT": "select"
   },
   "COMPANY": {
     "TITLE": "Company",
     "NAME": "Name",
     "ADDRESS": "Address",
-    "lOCAL":"locals",
-    "COMPANYSUCCESSTITLE":"End of add company",
-    "COMPANYSUCCESSBODY":"End of your adding",
-    "COMPANYERREURBODY":"An error occured when adding company",
-    "PASSWORD":"Password"
+    "lOCAL": "locals",
+    "COMPANYSUCCESSTITLE": "End of add company",
+    "COMPANYSUCCESSBODY": "End of your adding",
+    "COMPANYERREURBODY": "An error occured when adding company",
+    "PASSWORD": "Password"
   },
   "CALENDAR": {
-   "TITLE": "Calendar",
-   "DATE": "Date",
-   "EMPLOYED": "Employed",
-   "COMPANY":"Company",
-   "CALENDARSUCCESSTITLE":"End of add calendar",
-   "CALENDARSUCCESSBODY":"End of your adding",
-   "CALENDARERREURBODY":"An error occured when adding calendar"
- }, 
- "PRODUCT":{
-  "TITLE":"Product",
-  "Name":"Name",
-  "PRODUCTSUCCESSTITLE":"End of add product",
-  "PRODUCTSUCCESSBODY":"End of your adding",
-  "PRODUCTERREURBODY":"An error occured when adding product"
- } , 
- "MEMBER":{
-  "TITLE":"Member",
-  "NAME":"Name",
-  "USERNAME":"Username",
-  "ADDRESS":"Address",
-  "EMAIL":"Email",
-  "EMAILVALID":"Email must be a valid email address",
-  "PASSWORD":"Password",
-  "PASSWORDVALID":"Password must be at least 6 characters",
-  "MEMBERSUCCESSTITLE":"End of add member",
-  "MEMBERSUCCESSBODY":"End of your adding",
-  "MEMBERERREURBODY":"An error occured when adding member"
- } ,
- "FICHE":{
-  "TITLE":"Payement bill",
-  "RESPONSIBLENAME":"Responsible name",
-  "UNCERTICIDE":"uncerticide",
-  "SUPERVISORNAME":"Supervisor name",
-  "OBSERVATIONS":"observations",
-  "ARRIVALTIME":"arrival time",
-  "DEPARTURETIME":"departure time",
-  "FICHESUCCESSTITLE":"End of add fiche",
-  "FICHESUCCESSBODY":"End of your adding",
-  "FICHEERREURBODY":"An error occured when adding fiche"
- },
- "lOCAL":{
-  "lOCALSUCCESSTITLE":"End of add local",
-  "lOCALSUCCESSBODY":"End of your adding",
-  "lOCALERREURBODY":"An error occured when adding local"
- },"DERATIZATION":{
-  "TITLE":"Deratization",
-  "DERATIZATIONSUCCESSTITLE":"End of add deratization",
-  "DERATIZATIONSUCCESSBODY":"End of your adding",
-  "DERATIZATIONERREURBODY":"An error occured when adding deratization"
-
-},"DISINESCTION":{
-  "TITLE":"Disinsection",
-  "DERATIZATIONSUCCESSTITLE":"End of add disinsection",
-  "DERATIZATIONSUCCESSBODY":"End of your adding",
-  "DERATIZATIONERREURBODY":"An error occured when adding Disinsection"
-
-},
+    "TITLE": "Calendar",
+    "DATE": "Date",
+    "EMPLOYED": "Employed",
+    "COMPANY": "Company",
+    "CALENDARSUCCESSTITLE": "End of add calendar",
+    "CALENDARSUCCESSBODY": "End of your adding",
+    "CALENDARERREURBODY": "An error occured when adding calendar"
+  },
+  "PRODUCT": {
+    "TITLE": "Product",
+    "Name": "Name",
+    "PRODUCTSUCCESSTITLE": "End of add product",
+    "PRODUCTSUCCESSBODY": "End of your adding",
+    "PRODUCTERREURBODY": "An error occured when adding product"
+  },
+  "MEMBER": {
+    "TITLE": "Member",
+    "NAME": "Name",
+    "USERNAME": "Username",
+    "ADDRESS": "Address",
+    "EMAIL": "Email",
+    "EMAILVALID": "Email must be a valid email address",
+    "PASSWORD": "Password",
+    "PASSWORDVALID": "Password must be at least 6 characters",
+    "MEMBERSUCCESSTITLE": "End of add member",
+    "MEMBERSUCCESSBODY": "End of your adding",
+    "MEMBERERREURBODY": "An error occured when adding member"
+  },
+  "FICHE": {
+    "TITLE": "Payement bill",
+    "RESPONSIBLENAME": "Responsible name",
+    "UNCERTICIDE": "uncerticide",
+    "SUPERVISORNAME": "Supervisor name",
+    "OBSERVATIONS": "observations",
+    "ARRIVALTIME": "arrival time",
+    "DEPARTURETIME": "departure time",
+    "FICHESUCCESSTITLE": "End of add fiche",
+    "FICHESUCCESSBODY": "End of your adding",
+    "FICHEERREURBODY": "An error occured when adding fiche"
+  },
+  "lOCAL": {
+    "lOCALSUCCESSTITLE": "End of add local",
+    "lOCALSUCCESSBODY": "End of your adding",
+    "lOCALERREURBODY": "An error occured when adding local"
+  },
+  "DERATIZATION": {
+    "TITLE": "Deratization",
+    "DERATIZATIONSUCCESSTITLE": "End of add deratization",
+    "DERATIZATIONSUCCESSBODY": "End of your adding",
+    "DERATIZATIONERREURBODY": "An error occured when adding deratization"
+  },
+  "DISINESCTION": {
+    "TITLE": "Disinsection",
+    "DERATIZATIONSUCCESSTITLE": "End of add disinsection",
+    "DERATIZATIONSUCCESSBODY": "End of your adding",
+    "DERATIZATIONERREURBODY": "An error occured when adding Disinsection"
+  }, 
   "Users": {
     "ROLE_ADMIN": "Admin",
     "ROLE_MINISTRY_SUPERINTENDENT": "Ministry SuperIntendent",
@@ -91,11 +106,11 @@
     "ROLE_INSTITUTION_SUPERINTENDENT": "Institution SuperIntendent",
     "ROLE_INSTITUTION_ADMIN": "Institution Admin",
     "ROLE_INSTITUTION_DATA_ENTRY": "Institution Data Entry",
-    "Clear":"Clear",
+    "Clear": "Clear",
     "Users": "User",
-    "ListOfUsers": "List of Users", 
+    "ListOfUsers": "List of Users",
     "AddUsers": "Add User",
-    "UpdateUser":"Update User",
+    "UpdateUser": "Update User",
     "Add": "Add",
     "Email": "Email",
     "EmailIsRequired": "Email is required",
@@ -103,7 +118,7 @@
     "userName": "Username",
     "password": "Password",
     "Role": "Role",
-    "Actions": "Actions", 
+    "Actions": "Actions",
     "selectRole": "Select role",
     "Regions": "Regions",
     "SelectRegions": "Select regions",
@@ -112,9 +127,9 @@
     "Groups": "Groups",
     "SelectGroups": "Select Groups",
     "GroupNotFound": "Group Not Found",
-    "SelectInstitution": "Select Institution", 
+    "SelectInstitution": "Select Institution",
     "InstitutionNotFound": "Institution Not Found",
-    "InstitutionMore":"More", 
+    "InstitutionMore": "More",
     "ConfirmPassword": "Confirm password",
     "UsernameIsRequired": "Username is required",
     "PasswordIsRequired": "Password is required",
@@ -134,20 +149,26 @@
     "PaginationLimit": "Pagination Limit:",
     "PaginationRage": "Pagination Rage:",
     "PaginationOf": "of",
-    "PaginationEntries":"entries",
-    "PaginationShowing":"Showing",
-    "PaginationTo":"to",
+    "PaginationEntries": "entries",
+    "PaginationShowing": "Showing",
+    "PaginationTo": "to",
     "TableNextTooltip": "Next",
     "TablePreviousTooltip": "Previous",
     "TableLastTooltip": "Last",
     "TableFirstTooltip": "First",
     "TableShowHideColumn": "Show/Hide Column",
     "TableSearch": "Search",
-    "ToasterUpdateUserSuccess":"User info has been updated",
-    "ToasterUpdateUserError":"Error updating user info",
-    "ToasterAddUserSuccess":"User has been added",
-    "ToasterAddUserError":"Error in adding user",
-    "ToasterDeleteUserSuccess":"User has been deleted",
-    "ToasterDeleteUserError":"Error deleting user info" 
+    "ToasterUpdateUserSuccess": "User info has been updated",
+    "ToasterUpdateUserError": "Error updating user info",
+    "ToasterAddUserSuccess": "User has been added",
+    "ToasterAddUserError": "Error in adding user",
+    "ToasterDeleteUserSuccess": "User has been deleted",
+    "ToasterDeleteUserError": "Error deleting user info"
+  },
+  "HOME": {
+    "TITLE": "Overview",
+    "COMPANY":"Company",
+    "ACTION":"Action"
+       
   }
-} 
+}

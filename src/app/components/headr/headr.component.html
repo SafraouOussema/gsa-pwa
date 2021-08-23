@@ -49,13 +49,13 @@
                   </div>
                 </li>
                 <li>
-                  <a href="app-mail.html" class="dropdown-item">
+                  <a   class="dropdown-item">
                     {{info.username}}
                   </a>
               </li>
                 <li>
-                  <a href="app-mail.html" class="dropdown-item">
-                    <div *ngIf="info.authorities == 'ROLE_ADMIN' "> Admin</div>
+                  <a   class="dropdown-item">
+                    <div *ngIf="info.authorities.length>1 ||  info.authorities == 'ROLE_ADMIN' "> Admin</div>
                   </a>
               </li>
   

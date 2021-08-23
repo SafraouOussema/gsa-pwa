@@ -1,16 +1,15 @@
-<div class="qrwith">
-  <!-- <qr-scanner          
-    [debug]="false" [canvasWidth]="300" [canvasHeight]="300" [stopAfterScan]="false"
-      [updateTime]="500">
-    </qr-scanner> -->
-    <button pButton pRipple label="click for scan" icon="pi pi-plus"
-    class="p-button-success p-mr-2"
-    (click)="openScan()"></button>
+<div class="grid-container">
+  <div class="grid-item"></div>
+  <div class="grid-item">
+    <button pButton pRipple label="click for scan" icon="pi pi-plus" class="p-button-success p-mr-2"
+      (click)="openScan()"></button>
+    <br>
+    <div class="qrcenter" *ngIf="canScan">
+      <div class="qrwith"> 
 
-  <div *ngIf="canScan">
-    <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+        <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+      </div>
+    </div>
   </div>
-  {{findLocal }}
-  {{userId}}
-  {{date}}
-</div> 
+  <div class="grid-item"></div>
+</div>

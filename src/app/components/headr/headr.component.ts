@@ -36,7 +36,7 @@ export class HeadrComponent implements OnInit {
       username: this.token.getUsername(),
       authorities: this.token.getAuthorities()
     };
-
+    console.log(this.info)
   }
   toggleLogout(){
     this.token.signOut();
