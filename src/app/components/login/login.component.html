@@ -9,9 +9,9 @@
                 <img src="../../assets/assets/img/logo-big.png" alt="logo">
               </a>
             </div>
-            <h1> {{ 'LOGIN.WELCOME' | translate }}</h1>
+            <h1> GSA</h1>
             <span class="description">
-            </span>
+            </span> 
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
                   <div class="row col-sm-6" style="max-width:350px;">
                     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                       <div class="form-group">
-                        <label for="username">{{ 'LOGIN.EMAIL' | translate }}</label>
+                        <label for="username">  Nom d'utilisateur </label>
                         <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
                           required />
                         <!-- <div *ngIf="f.submitted && username.invalid">
@@ -35,7 +35,7 @@
                         </div> -->
                       </div>
                       <div class="form-group">
-                        <label for="password">{{ 'LOGIN.PASSWORD' | translate }}</label>
+                        <label for="password">Mot de passe</label>
                         <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
                           required minlength="6" />
                         <!-- <div *ngIf="f.submitted && password.invalid">
@@ -44,9 +44,9 @@
                         </div> -->
                       </div>
                       <div class="form-group">
-                        <button class="btn btn-primary">{{ 'LOGIN.LOGINBUTTON' | translate }}</button>
+                        <button class="btn btn-primary">Connexion</button>
                         <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
-                          Login failed: {{errorMessage}}
+                          Échec de la connexion: {{errorMessage}}
                         </div>
                       </div>
                     </form>

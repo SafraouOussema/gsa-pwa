@@ -69,14 +69,13 @@
                                     <td>{{file.harrive}}</td>
                                     <td>{{file.hdepart}}</td>
 
-                                    <td> <a (click)="remove(file.id)"><i class="la la-close delete"></i></a> </td>
+                                    <td> <a (click)="remove(file.id)"><i class="la la-close delete pointer"></i></a> </td>
                                     <td> <a mat-button
                                             [routerLink]="['template/deratisation', file.id,file.company.id]">
                                             deratisation</a></td>
                                     <td> <a mat-button
                                             [routerLink]="['template/desinsectisation', file.id,file.company.id]">
-                                            desinsectisation</a></td>
-
+                                            desinsectisation</a></td> 
                                 </tr>
                             </ng-template>
                         </p-table>
@@ -120,22 +119,7 @@
                         <div *ngIf="label.errors.required">observations is required</div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="Harrive">Harrive</label>
-                    <input type="time" class="form-control" name="label" min="08:00" max="18:00"
-                        [(ngModel)]="form.harrive" #label="ngModel" required />
-                    <div *ngIf="f.submitted && label.invalid">
-                        <div *ngIf="label.errors.required">Harrive is required</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="hdepart">hdepart</label>
-                    <input type="time" class="form-control" name="label" min="08:00" max="18:00"
-                        [(ngModel)]="form.hdepart" #label="ngModel" required />
-                    <div *ngIf="f.submitted && label.invalid">
-                        <div *ngIf="label.errors.required">Harrive is required</div>
-                    </div>
-                </div>
+               
 
                 <div class="form-group">
                     <button class="btn btn-primary">Ajouter</button>

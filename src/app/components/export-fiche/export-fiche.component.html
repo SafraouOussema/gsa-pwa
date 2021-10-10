@@ -62,15 +62,21 @@
                             <thead>
                                 <tr>
                                     <th>Locaux</th>
-                                    <th>passage</th>
-                                    <th>produit</th>
+                                    <!-- <th>passage</th> -->
+                                    <th>Produit</th>
+                                    <th>Heure arrivée</th>
+                                    <th>Heure départ</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let deratisation of deratisations">
                                     <td>{{ deratisation.locaux.name }}</td>
-                                    <td>{{ deratisation.acceder }}</td>
+                                    <!-- <td>{{ deratisation.acceder }}</td> -->
                                     <td>{{ deratisation.produit.pname }}</td>
+                                    <td>{{ findLocal(deratisation,"arrivee") }}</td>
+                                    <td>{{  findLocal(deratisation,"depart") }}</td>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -91,15 +97,19 @@
 
                                 <tr>
                                     <th>Locaux</th>
-                                    <th>passage</th>
-                                    <th>produit</th>
+                                    <!-- <th>passage</th> -->
+                                    <th>Produit</th> 
+                                    <th>Heure arrivée</th>
+                                    <th>Heure départ</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let desinsectisation of desinsectisations">
                                     <td>{{ desinsectisation.locaux.name }}</td>
-                                    <td>{{ desinsectisation.acceder }}</td>
-                                    <td>{{ desinsectisation.produit.pname }}</td>
+                                    <!-- <td>{{ desinsectisation.acceder }}</td> -->
+                                    <td>{{ desinsectisation.produit.pname }}</td> 
+                                    <td>{{ findLocal(desinsectisation,"arrivee") }}</td>
+                                    <td>{{  findLocal(desinsectisation,"depart") }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -142,21 +152,46 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let file of fiches">
-                                    
-                                        <td>{{file[1]}}</td>
-                                        <td>{{ file[2] }}</td>
-                                        <td>{{ file[3] }}</td>
-                                        <td>{{ file[4] }}</td>
-                                        <td>{{ file[5] }}</td>
-                                        <td>{{ file[6] }}</td>
-                                    
+                                <tr  >
+
+                                    <td>{{fiches[1]}}</td>
+                                    <td>{{ fiches[2] }}</td>
+                                    <td>{{ fiches[3] }}</td>
+                                    <td>{{ fiches[4] }}</td>
+                                    <td>{{ fiches[5] }}</td>
+                                    <td>{{ fiches[6] }}</td>
+
                                 </tr>
                             </tbody>
                         </table>
 
-                       
 
+
+                        <table id="my-signe" style="
+     max-width: 25%;
+     text-align: -webkit-center;
+     height: 130px; 
+" class="table table-striped">
+                            <thead>
+
+                                <tr>
+                                    <th>
+                                        Signature
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+
+                                    <td>
+
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
 
 
 

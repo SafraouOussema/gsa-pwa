@@ -64,8 +64,8 @@
                                 </p-sortIcon>
                             </th>
                             <th pSortableColumn="address"> {{ 'COMPANY.ADDRESS' | translate }} <p-sortIcon field="address"></p-sortIcon>
-                            </th>
-                            <th> list fiche </th>
+                            </th> 
+                            <th> List de fiche</th>
                             <th> {{ 'HEADER.ADD' | translate }} </th>
                             <th> {{ 'HEADER.REMOVE' | translate }} </th>
 
@@ -77,13 +77,13 @@
                             <td>{{file.address}}</td>
                             <td>
                                 <a mat-button [routerLink]="['template/fiche', file.id]">
-                                    liste fiche
+                                    Les lists de fiche
                                 </a>
                             </td>
 
                             <td>
                                 <a mat-button [routerLink]="['template/locaux', file.id]">
-                                    {{ 'HEADER.ADD' | translate }} {{ 'COMPANY.lOCAL' | translate }}
+                                    Ajouter des locaux 
                                 </a>
                             </td>
 

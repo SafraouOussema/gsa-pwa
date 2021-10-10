@@ -190,7 +190,7 @@ export class ScanQrcodeComponent implements OnInit {
  
         this.canScan = false;
     }
-
+ 
     addScanCode(data,findLocalId){
         this.scanedCodeService.save(data, this.userId, this.calendarId, findLocalId).subscribe(
             data => {

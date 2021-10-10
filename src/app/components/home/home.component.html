@@ -19,7 +19,7 @@
             <div class="body">
               <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
-                  <h2> {{ 'HOME.TITLE' | translate }}   </h2>
+                  <h2> {{ 'HOME.TITLE' | translate }} </h2>
                 </ng-template>
                 <ng-template pTemplate="right">
 
@@ -28,16 +28,12 @@
 
               <p-table #dt2 [value]="niveaus" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
                 currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
-                [globalFilterFields]="['[3]' ]" [rowsPerPageOptions]="[10,25,50]">
-               
-
+                [globalFilterFields]="['[3]' ]" [rowsPerPageOptions]="[10,25,50]"> 
                 <ng-template pTemplate="header">
                   <tr>
-                    <th pSortableColumn="[3]"> {{ 'HOME.COMPANY' | translate }}   <p-sortIcon field="date"></p-sortIcon>
+                    <th pSortableColumn="[3]"> {{ 'HOME.COMPANY' | translate }} <p-sortIcon field="date"></p-sortIcon>
                     </th>
-                    <th> {{ 'HOME.ACTION' | translate }}    </th>
-
- 
+                    <th> {{ 'HOME.ACTION' | translate }} </th> 
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-file>
@@ -45,11 +41,13 @@
                     <td>{{file[3]}}</td>
 
                     <td>
-                      <button pButton [routerLink]="['template/scanqrcode',  file[0],file[2],file[4]]" pRipple label="scan qrcode" icon="pi pi-plus" class="p-button-success p-mr-2" ></button>
-                      <button pButton [routerLink]="['template/fiche', file[0],file[2],file[4]]" pRipple label="ajouter fiche" icon="pi pi-plus" class="p-button-success p-mr-2"  ></button>
-                        <button pButton  [routerLink]="['template/exportfiche', file[0]]" pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
-
-                   </tr>
+                      <button pButton [routerLink]="['template/scanqrcode',  file[0],file[2],file[4]]" pRipple
+                        label="scanner le code QR" icon="pi pi-plus" class="p-button-success p-mr-2"></button>
+                      <button pButton [routerLink]="['template/fiche', file[0],file[2],file[4]]" pRipple
+                        label="Ajouter une fiche" icon="pi pi-plus" class="p-button-success p-mr-2"></button>
+                      <button pButton [routerLink]="['template/exportfiche', file[0]]" pRipple label="Export"
+                        icon="pi pi-upload" class="p-button-help"></button>
+                  </tr>
                 </ng-template>
               </p-table>
 
@@ -60,8 +58,8 @@
       </div>
     </div>
 
- 
-     
+
+
 
   </section>
 

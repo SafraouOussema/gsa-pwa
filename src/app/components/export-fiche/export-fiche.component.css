@@ -1,0 +1,7 @@
+.table thead th {
+    vertical-align: middle;
+    border: 0 none;
+    padding: 20px 12px 20px 12px;
+    color: rgb(0 0 0 / 87%);
+    font-weight: 600;
+}

@@ -1,173 +1,188 @@
 <section class="content">
 
-<div class="row">
-    <div class="page-header">
-        <div class="d-flex align-items-center">
+    <div class="row">
+        <div class="page-header">
+            <div class="d-flex align-items-center">
 
+            </div>
         </div>
     </div>
-</div>
- 
-<div class="row flex-row">
-    <div class="my-sites-component col-md-12">
-        <div class="widget widget-07 has-shadow"> 
-            <div class="card">
-                <div class="body">
-                    <p-toolbar styleClass="p-mb-4">
-                        <ng-template pTemplate="left">
-                            <h2> Users
-                            </h2>
-                        </ng-template>  
-                        <ng-template pTemplate="right">
-                            <button pButton pRipple label="{{ 'HEADER.ADD' | translate }}" icon="pi pi-plus"
-                                class="p-button-success p-mr-2"
-                                (click)="ngxSmartModalService.getModal('myModal').open()"></button>
-                            <!-- <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button> -->
-                        </ng-template>
-                    </p-toolbar> 
-                    <p-table #dt2 [value]="filterData" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-                        currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
-                        [globalFilterFields]="['username','name','email' ]" [rowsPerPageOptions]="[10,25,50]">
-                        <ng-template pTemplate="caption">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <button pButton label="{{ 'Users.Clear' | translate}} " class="p-button-outlined"
-                                        icon="pi pi-filter-slash" (click)="clear(dt2, gb)"></button>
+
+    <div class="row flex-row">
+        <div class="my-sites-component col-md-12">
+            <div class="widget widget-07 has-shadow">
+                <div class="card">
+                    <div class="body">
+                        <p-toolbar styleClass="p-mb-4">
+                            <ng-template pTemplate="left">
+                                <h2> Utilisateurs
+                                </h2>
+                            </ng-template>
+                            <ng-template pTemplate="right">
+                                <button pButton pRipple label="{{ 'HEADER.ADD' | translate }}" icon="pi pi-plus"
+                                    class="p-button-success p-mr-2"
+                                    (click)="ngxSmartModalService.getModal('myModal').open()"></button>
+                                <!-- <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button> -->
+                            </ng-template>
+                        </p-toolbar>
+                        <p-table #dt2 [value]="filterData" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                            currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
+                            [globalFilterFields]="['username','name','email' ]" [rowsPerPageOptions]="[10,25,50]">
+                            <ng-template pTemplate="caption">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <button pButton label="{{ 'Users.Clear' | translate}} "
+                                            class="p-button-outlined" icon="pi pi-filter-slash"
+                                            (click)="clear(dt2, gb)"></button>
+                                    </div>
+                                    <div class="col-md-3 offset-md-6" style="text-align: right;">
+                                        <span class="p-input-icon-left p-ml-auto">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" #gb
+                                                (input)="dt2.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="{{ 'Users.TableSearch' | translate}}" />
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="col-md-3 offset-md-6" style="text-align: right;">
-                                    <span class="p-input-icon-left p-ml-auto">
-                                        <i class="pi pi-search"></i>
-                                        <input pInputText type="text" #gb
-                                            (input)="dt2.filterGlobal($event.target.value, 'contains')"
-                                            placeholder="{{ 'Users.TableSearch' | translate}}" />
-                                    </span>
-                                </div>
-                            </div>
-                        </ng-template> 
-                        <ng-template pTemplate="header">
-                            <tr>  
-                                <th pSortableColumn="name"> name <p-sortIcon field="name"></p-sortIcon> 
-                                </th>
-                                <th pSortableColumn="email"> email <p-sortIcon field="email"></p-sortIcon> 
-                                </th>
-                                <th pSortableColumn="username"> username <p-sortIcon field="username"></p-sortIcon>  
-                                </th>
-                                <th>
-                                    roles
+                            </ng-template>
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th pSortableColumn="name"> Nom <p-sortIcon field="name"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="email"> Email <p-sortIcon field="email"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="username"> Nom d'utilisateur <p-sortIcon field="username">
+                                        </p-sortIcon>
+                                    </th>
+                                    <th>
+                                        Role
+                                    </th>
+                                    <th>
+                                        List de fiche
+                                    </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-file>
+                                <tr>
 
-                                </th>
-                                <th>
-                                    list fiche
+                                    <td>{{file.name}}</td>
+                                    <td>{{file.email}}</td>
+                                    <td>{{file.username}}</td>
 
-                                </th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-file>
-                            <tr>
+                                    <!-- roles -->
 
-                                <td>{{file.name}}</td>
-                        <td>{{file.email}}</td>
-                        <td>{{file.username}}</td>
-
-                        <!-- roles -->
-
-                        <ng-container *ngIf="file.roles.length > 1;else second">
-                            <td>
-                                Admin
-                            </td>
-                        </ng-container>
-                        <ng-template #second>
-                            <ng-container *ngIf="file.roles[0].name =='ROLE_ADMIN';else third">
-                                <td>
-                                    Admin
-                                </td>
-                            </ng-container>
-                        </ng-template>
-                        <ng-template #third class="teamsfox-text">
-                            <ng-container *ngIf="file.roles[0].name =='ROLE_USER'">
-                                <td>
-                                    User
-                                </td>
-                            </ng-container>
-                        </ng-template>
-                        <!-- end roles -->
-                        <td>
-                            <a mat-button [routerLink]="['template/fiche', file.id]">
-                                list
-                            </a>
-                        </td> 
-                            </tr>
-                        </ng-template>
-                    </p-table>  
+                                    <ng-container *ngIf="file.roles.length > 1;else second">
+                                        <td>
+                                            Admin
+                                        </td>
+                                    </ng-container>
+                                    <ng-template #second>
+                                        <ng-container *ngIf="file.roles[0].name =='ROLE_ADMIN';else third">
+                                            <td>
+                                                Admin
+                                            </td>
+                                        </ng-container>
+                                    </ng-template>
+                                    <ng-template #third class="teamsfox-text">
+                                        <ng-container *ngIf="file.roles[0].name =='ROLE_USER'">
+                                            <td>
+                                                User
+                                            </td>
+                                        </ng-container>
+                                    </ng-template>
+                                    <!-- end roles -->
+                                    <td>
+                                        <a mat-button [routerLink]="['template/fiche', file.id]">
+                                            Les lists de fiche
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
-</div>
 
 
 
-<ngx-smart-modal #myModal identifier="myModal">
-    <h1> {{ 'HEADER.ADD' | translate }} {{ 'COMPANY.TITLE' | translate }} </h1>
-    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-        <div class="form-group">
-            <label for="name"> {{ 'MEMBER.NAME' | translate }} </label>
-            <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
-            <div *ngIf="f.submitted && name.invalid">
-                <div *ngIf="name.errors.required"> {{ 'MEMBER.NAME' | translate }} {{ 'HEADER.ISREQUIRED' | translate }}
+    <ngx-smart-modal #myModal identifier="myModal">
+        <h1> {{ 'HEADER.ADD' | translate }} {{ 'COMPANY.TITLE' | translate }} </h1>
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="name"> {{ 'MEMBER.NAME' | translate }} </label>
+                <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
+                <div *ngIf="f.submitted && name.invalid">
+                    <div *ngIf="name.errors.required"> {{ 'MEMBER.NAME' | translate }} {{ 'HEADER.ISREQUIRED' |
+                        translate }}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="username"> {{ 'MEMBER.USERNAME' | translate }} </label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
-                required />
-            <div *ngIf="f.submitted && username.invalid">
-                <div *ngIf="username.errors.required"> {{ 'MEMBER.USERNAME' | translate }} {{ 'HEADER.ISREQUIRED' |
-                    translate }}
+            <div class="form-group">
+                <label for="username"> {{ 'MEMBER.USERNAME' | translate }} </label>
+                <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
+                    required />
+                <div *ngIf="f.submitted && username.invalid">
+                    <div *ngIf="username.errors.required"> {{ 'MEMBER.USERNAME' | translate }} {{ 'HEADER.ISREQUIRED' |
+                        translate }}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="address"> {{ 'MEMBER.ADDRESS' | translate }} </label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="form.address" #address="ngModel"
-                required />
-            <div *ngIf="f.submitted && address.invalid">
-                <div *ngIf="address.errors.required"> {{ 'MEMBER.ADDRESS' | translate }} {{ 'HEADER.ISREQUIRED' |
-                    translate }}
+            <div class="form-group">
+                <label for="address"> {{ 'MEMBER.ADDRESS' | translate }} </label>
+                <input type="text" class="form-control" name="username" [(ngModel)]="form.address" #address="ngModel"
+                    required />
+                <div *ngIf="f.submitted && address.invalid">
+                    <div *ngIf="address.errors.required"> {{ 'MEMBER.ADDRESS' | translate }} {{ 'HEADER.ISREQUIRED' |
+                        translate }}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="email"> {{ 'MEMBER.EMAIL' | translate }} </label>
-            <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required
-                email />
-            <div *ngIf="f.submitted && email.invalid">
-                <div *ngIf="email.errors.required"> {{ 'MEMBER.EMAIL' | translate }} {{ 'HEADER.ISREQUIRED' | translate
-                    }}
+            <div class="form-group">
+                <label for="email"> {{ 'MEMBER.EMAIL' | translate }} </label>
+                <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required
+                    email />
+                <div *ngIf="f.submitted && email.invalid">
+                    <div *ngIf="email.errors.required"> {{ 'MEMBER.EMAIL' | translate }} {{ 'HEADER.ISREQUIRED' |
+                        translate
+                        }}
+                    </div>
+                    <div *ngIf="email.errors.email">{{ 'MEMBER.EMAILVALID' | translate }} </div>
                 </div>
-                <div *ngIf="email.errors.email">{{ 'MEMBER.EMAILVALID' | translate }} </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="password"> {{ 'COMPANY.PASSWORD' | translate }} </label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
-                required minlength="6" />
-            <div *ngIf="f.submitted && password.invalid">
-                <div *ngIf="password.errors.required"> {{ 'MEMBER.PASSWORD' | translate }} {{ 'HEADER.ISREQUIRED' |
-                    translate }}
+            <div class="form-group">
+                <label for="password"> {{ 'COMPANY.PASSWORD' | translate }} </label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="form.password"
+                    #password="ngModel" required minlength="6" />
+                <div *ngIf="f.submitted && password.invalid">
+                    <div *ngIf="password.errors.required"> {{ 'MEMBER.PASSWORD' | translate }} {{ 'HEADER.ISREQUIRED' |
+                        translate }}
+                    </div>
+                    <div *ngIf="password.errors.minlength">{{ 'MEMBER.PASSWORDVALID' | translate }} </div>
                 </div>
-                <div *ngIf="password.errors.minlength">{{ 'MEMBER.PASSWORDVALID' | translate }} </div>
             </div>
-        </div>
-        <div class="form-group">
-            <button class="btn btn-primary"> {{ 'HEADER.ADD' | translate }} </button>
-            <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-                Signup failed!<br />{{errorMessage}}
+
+            <div class="form-group">
+                <label for="password"> Role </label>
+
+                <select [(ngModel)]="selectedRole" name="profile" class="form-control selectpicker show-tick">
+                    <option *ngFor="let company of listRole" [value]="company.value">
+                        {{ company.name }} </option>
+                </select>
+                <p *ngIf="selectedRole">Role choisit. </p>
             </div>
-        </div>
-    </form>
-</ngx-smart-modal>
+
+
+
+            <div class="form-group">
+                <button class="btn btn-primary"> {{ 'HEADER.ADD' | translate }} </button>
+                <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                    Signup failed!<br />{{errorMessage}}
+                </div>
+            </div>
+        </form>
+    </ngx-smart-modal>
 
 </section>

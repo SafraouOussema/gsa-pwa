@@ -9,6 +9,8 @@ import {LocauxService} from '../../service/locaux.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { ToasterService, ToasterConfig, Toast,    OnActionCallback, ToasterModule, BodyOutputType } from 'angular2-toaster';
 import { TranslateService } from '@ngx-translate/core';
+import {  ScanedCodeService } from '../../service/scaned-code.service';
+
 import { Table } from 'primeng/table';
  
 @Component({
@@ -38,6 +40,7 @@ export class DeratisationComponent implements OnInit  {
                private router: Router,
                private zone:NgZone,
                private companyService: CompanyService,
+               private scanedCodeService : ScanedCodeService,
                private deratisationService: DeratisationService,
                private produitService: ProduitService,
                private locauxService: LocauxService,
@@ -84,26 +87,30 @@ export class DeratisationComponent implements OnInit  {
    }
  
  
-   loadData(){
+   loadData(){    
+     let promises: Promise<any>[] = [];
+
      this.route.params.subscribe(params => {
        const id = params['fichid'];
        this.fi = id ;
        const comid = params['companyid'];
-       this.deratisationService.get(id).subscribe(data => {
-         this.gcs = data;
-         console.log( this.gcs);
+       let selectedcalendar = params['calanderid'];
+
+       promises.push(this.deratisationService.get(id).toPromise());
+       promises.push(this.locauxService.get(comid).toPromise());
+       promises.push(this.produitService.getAll().toPromise());
+       promises.push(this.scanedCodeService.getScanedCodeByCalanderId(selectedcalendar).toPromise())
  
+       return Promise.all(promises).then(results => {
+         console.log(results)
+         this.gcs = results[0]; 
+         this.produits = results[2];
+         this.niveaus = results[1].filter((v, i) => results[3].findIndex(item => item.locaux.id == v.id) != -1);
+     
        });
-       this.locauxService.get(comid).subscribe(data => {
-         this.niveaus = data;
-         console.log( this.niveaus);
  
-       });
      });
-     this.produitService.getAll().subscribe(data => {
-       this.produits = data;
-       console.log(this.produits);
-     });
+   
    } 
  
  

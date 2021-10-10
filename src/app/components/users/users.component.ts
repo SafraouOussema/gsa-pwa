@@ -23,6 +23,9 @@ export class UsersComponent implements OnInit {
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
+
+  selectedRole: string;
+listRole=[];
   /**
     * Success toaster title of members teams component
     */
@@ -62,6 +65,12 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.listRole=[];
+
+    this.listRole.push({name:'Admin',value:'admin'});
+    this.listRole.push({name:'Utilisatuer',value:'user'});
+
+
     this.loadData();
   }
   loadData() {
@@ -86,39 +95,51 @@ export class UsersComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form);
+    console.log(this.selectedRole);
+    let roles = [];
+    roles.push(this.selectedRole)
+     
+    if (this.selectedRole == null ||this.selectedRole == undefined|| this.selectedRole.length ==0 ){
+      this.toasterService.pop('error', 'Il faut choisir un role');
 
-    this.signupInfo = new SignUpInfo(
-      this.form.name,
-      this.form.username,
-      this.form.email,
-      this.form.password,
-      this.form.address);
+    }else{
+      this.signupInfo = new SignUpInfo(
+        this.form.name,
+        this.form.username,
+        this.form.email,
+        this.form.password,
+        roles,
+        this.form.address);
+  
+      this.authService.signUp(this.signupInfo).subscribe(
+        data => {
+          this.toasterService.pop('success', this.successToasterTitle, this.successToasterBody);
+  
+          console.log(data);
+          this.isSignedUp = true;
+          this.isSignUpFailed = false;
+        },
+        error => {
+          console.log(error);
+          this.toasterService.pop('error', this.erreurToasterBody);
+  
+          this.errorMessage = error.error.message;
+          this.isSignUpFailed = true;
+        }
+      );
+    }
 
-    this.authService.signUp(this.signupInfo).subscribe(
-      data => {
-        this.toasterService.pop('success', this.successToasterTitle, this.successToasterBody);
 
-        console.log(data);
-        this.isSignedUp = true;
-        this.isSignUpFailed = false;
-      },
-      error => {
-        console.log(error);
-        this.toasterService.pop('error', this.erreurToasterBody);
-
-        this.errorMessage = error.error.message;
-        this.isSignUpFailed = true;
-      }
-    );
+   
   }
 
 
-  
+
   clear(table: Table, globalFilter) {
     globalFilter.value = null;
     table.filters.global = {
-        value: null,
-        matchMode: 'contains'
+      value: null,
+      matchMode: 'contains'
     }
     table.clear();
   }

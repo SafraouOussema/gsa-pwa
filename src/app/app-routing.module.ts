@@ -85,9 +85,7 @@ const routes: Routes = [
        {
         path: 'company/template/fiche/:companyid/template/exportfiche/:calanderid',
         component: ExportFicheComponent
-      },
-
-
+      },  
       {
         path: 'user',
         component: UsersComponent

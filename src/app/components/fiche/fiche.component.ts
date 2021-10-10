@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CalendarService } from '../../service/calendar.service';
 import { CompanyService } from '../../service/company.service';
 import { UserService } from '../../service/user.service';
+import {  ScanedCodeService } from '../../service/scaned-code.service';
+
 import { FicheService } from '../../service/fiche.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { fiche } from './fiche';
@@ -55,11 +57,18 @@ export class FicheComponent implements OnInit {
   fiches: Array<any>;
   nope = 0;
 
+  
+  niveaus: Array<any>;
+  harrive :string ; 
+  hdepart :string ;
+  scendDate:number=0 ;
+  dateList =[];
   constructor(private route: ActivatedRoute,
     private router: Router,
     private calendarService: CalendarService,
     private companyService: CompanyService,
     private userService: UserService,
+    private scanedCodeService:ScanedCodeService,
     private ficheService: FicheService,
     private datePipe: DatePipe,
     private token: TokenStorageService,
@@ -82,20 +91,29 @@ export class FicheComponent implements OnInit {
     );
   }
 
-  niveaus: Array<any>;
 
   ngOnInit() {
     this.loadData();
   }
 
   loadData() {
+    let promises: Promise<any>[] = []; 
+    this.dateList=[]; 
     this.route.params.subscribe(params => {
       this.companyid = params['companyid'];
-
-
+      this.selectedcalendar = params['calanderid']; 
     });
-    this.calendarService.getAll().subscribe(data => {
-      for (let entry of data) {
+
+    promises.push(this.calendarService.getAll().toPromise());
+    promises.push(this.companyService.getAll().toPromise());
+    promises.push(this.ficheService.getAll().toPromise());
+    promises.push(this.scanedCodeService.getScanedCodeByCalanderId(this.selectedcalendar).toPromise())
+  
+    return Promise.all(promises).then(results => {
+
+      console.log("find user", results) ;
+      
+      for (let entry of results[0]) {
         if (entry.date == this.datePipe.transform(this.myDate, "yyyy-MM-dd")) {
           if (this.token.getUsername() == entry.user.username) {
 
@@ -105,48 +123,40 @@ export class FicheComponent implements OnInit {
           }
         }
       }
-      this.companyService.getAll().subscribe(dataa => {
-        for (let entry of this.niveaus) {
-          for (let entr of dataa) {
-            if (entry.company.id == entr.id) {
-              console.log(entry)
-              this.com.push(entr);
-              this.companys = this.com;
-            }
+
+      for (let entry of this.niveaus) {
+        for (let entr of results[1]) {
+          if (entry.company.id == entr.id) {
+            console.log(entry)
+            this.com.push(entr);
+            this.companys = this.com;
           }
         }
-      });
-    });
-
-    this.userService.getAll().subscribe(data => {
-      this.users = data;
-      for (let entr of data) {
-        if (this.token.getUsername() == entr.username) {
-          this.users = Array.of(entr);
-        }
       }
-      console.log(this.users[0].roles[0].name == 'ROLE_USER')
 
-    });
-
-
-
-    this.ficheService.getAll().subscribe(data => {
-      console.log("all", data)
-      if (data != null) {
-        for (let entry of data) {
+      if (results[2] != null) {
+        for (let entry of results[2]) {
           if (entry.calendar.date == this.datePipe.transform(this.myDate, "yyyy-MM-dd") && entry.company.id == this.companyid) {
             if (this.token.getUsername() == entry.user.username) {
-
               this.Fichea.push(entry);
-
               this.fiches = this.Fichea;
             }
           }
         }
-
-
       }
+
+      results[3].forEach(element => {
+        
+        let firstDate = new Date(element.date + " " + element.time)
+        firstDate.getTime();
+        let createDate = {
+          date:firstDate,
+          time:firstDate.getTime()
+        } 
+          this.dateList.push(createDate); 
+      });
+ 
+ 
 
     });
 
@@ -156,32 +166,35 @@ export class FicheComponent implements OnInit {
     this.router.navigate(['/fiche']);
   }
 
-
-
   async onSubmit() {
+
+    this.dateList.sort((a, b) => (a.color > b.color) ? 1 : -1)
+
+    console.log( this.dateList)
+    this.harrive = this.datePipe.transform(this.dateList[this.dateList.length-1].date, ("shortTime"))
+    this.hdepart = this.datePipe.transform( this.dateList[0].date, ("shortTime"))
+
+
 
     this.Fiche = new fiche(
       this.form.nresponsable,
       this.form.incerticide,
       this.form.nencadreur,
       this.form.observations,
-      this.form.harrive,
-      this.form.hdepart
+      this.harrive,
+      this.hdepart
     );
-    this.route.params.subscribe(params => {
 
+    this.route.params.subscribe(params => { 
       this.selecteduser = params['userid'];
       this.selectedcompany = params['companyid'];
-      this.selectedcalendar = params['calanderid'];
-
-
+      this.selectedcalendar = params['calanderid']; 
     });
 
 
+    console.log( this.Fiche)
 
 
-
-    if (this.form.hdepart > this.form.harrive) {
 
       this.ficheService.save(this.Fiche, this.selecteduser, this.selectedcompany, this.selectedcalendar).subscribe(
         data => {
@@ -200,9 +213,7 @@ export class FicheComponent implements OnInit {
 
 
 
-    } else {
-      console.log('erreur');
-    }
+    
 
   }
 

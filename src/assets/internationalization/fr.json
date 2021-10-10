@@ -5,7 +5,7 @@
     "TITLE": "Connexion",
     "EMAIL": "Nom d'utilisateur",
     "PASSWORD": "Mot de passe",
-    "LOGINBUTTON": "Connexion",
+    "LOGINBUTTON": "Connexion", 
     "EMAILMISSING": "Email requis",
     "PASSWORDMISSING": "Mot de passe requis",
     "ALERTLOGIN": "Email et/ou mot de passe incorrect.",

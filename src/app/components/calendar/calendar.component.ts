@@ -76,16 +76,13 @@ export class CalendarComponent implements OnInit {
 
   loadData(){
     this.calendarService.getAll().subscribe(data => {
-      this.niveaus = data;
-      console.log(this.niveaus);
+      this.niveaus = data; 
     });
     this.userService.getAll().subscribe(data => {
-      this.users = data;
-      console.log(data);
+      this.users = data; 
     });
     this.compnayService.getAll().subscribe(data => {
-      this.companys = data;
-      console.log(this.companys);
+      this.companys = data; 
     });
 
 
