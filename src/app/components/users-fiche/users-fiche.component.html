@@ -33,7 +33,8 @@
                         <p-table #dt2 [value]="filterNewData" [paginator]="true" [rows]="5"
                             [showCurrentPageReport]="true"
                             currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
-                            [globalFilterFields]="['calendar.company.label','calendar.date' ]" [rowsPerPageOptions]="[05,10,25,50]">
+                            [globalFilterFields]="['calendar.company.label','calendar.date' ]"
+                            [rowsPerPageOptions]="[05,10,25,50]">
                             <ng-template pTemplate="caption">
                                 <div class="row">
                                     <div class="col-md-3">
@@ -46,7 +47,7 @@
                                             <i class="pi pi-search"></i>
                                             <input pInputText type="text" #gb
                                                 (input)="dt2.filterGlobal($event.target.value, 'contains')"
-                                                placeholder="Search" />
+                                                placeholder="{{ 'Users.TableSearch' | translate}}" />
                                         </span>
                                     </div>
                                 </div>
@@ -54,32 +55,20 @@
 
                             <ng-template pTemplate="header">
                                 <tr>
-
-                                    <th pSortableColumn="calendar.company.label"> company <p-sortIcon field="calendar.company.label"></p-sortIcon>
+                                    <th pSortableColumn="calendar.company.label"> Company <p-sortIcon
+                                            field="calendar.company.label"></p-sortIcon>
                                     </th>
-
-                                    <th pSortableColumn="calendar.date"> date <p-sortIcon field="calendar.date"></p-sortIcon>
-                                    </th>
-                                    <th  > utilisateur name  
-
+                                    <th pSortableColumn="calendar.date"> Date <p-sortIcon field="calendar.date">
+                                        </p-sortIcon>
                                     </th>
                                     <th>
-                                        heure arriver
+                                        Heure arrivée
                                     </th>
                                     <th>
-                                        heure depart
+                                        Heure depart
                                     </th>
                                     <th>
-                                        incerticide
-                                    </th>
-                                    <th>
-                                        name encadreur
-                                    </th>
-                                    <th>
-                                        name responsable
-                                    </th>
-                                    <th>
-                                        observations
+                                        Fiche
                                     </th>
                                 </tr>
                             </ng-template>
@@ -89,29 +78,14 @@
                                     <td>{{file.calendar.company.label}}</td>
 
                                     <td>{{file.calendar.date}}</td>
-                                    <td>{{file.user.name}}</td>
 
                                     <td>{{file.harrive}}</td>
                                     <td>{{file.hdepart}}</td>
-
-                                    <td>{{file.incerticide}}</td>
-                                    <td>{{file.nencadreur}}</td>
-
-                                    <td>{{file.nresponsable}}</td>
-                                    <td>{{file.observations}}</td>
-
-                                    <td *ngFor="let desinsectisations of file.deratisation">
-                                        {{desinsectisations.locaux.name}}
-                                        {{desinsectisations.acceder}}
-                                        {{desinsectisations.false}}
+                                    <td>
+                                        <button pButton [routerLink]="['template/exportfiche', file.calendar.id]" pRipple
+                                            label="Export" icon="pi pi-upload" class="p-button-help"></button> 
                                     </td>
-                                    <td> ***** </td>
-                                    <td *ngFor="let desinsectisations of file.desinsectisation">
-                                        {{desinsectisations.locaux.name}}
-                                        {{desinsectisations.acceder}}
-                                        {{desinsectisations.false}}
-                                    </td>
-
+ 
                                 </tr>
                             </ng-template>
                         </p-table>

@@ -9,8 +9,8 @@ export class fiche {
     harrive: string;
     hdepart: string;
 
-    deratisation : any ;
-    desinsectisation : any ;
+    deratisation? : any ;
+    desinsectisation? : any ;
 
     user : any ;
     calendar : any ;

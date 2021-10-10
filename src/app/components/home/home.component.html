@@ -45,9 +45,8 @@
                     <td>{{file[3]}}</td>
 
                     <td>
-                      <button pButton [routerLink]="['template/fiche', file[0],file[2],file[4]]" pRipple label="ajouter fiche" icon="pi pi-plus" class="p-button-success p-mr-2"  ></button>
                       <button pButton [routerLink]="['template/scanqrcode',  file[0],file[2],file[4]]" pRipple label="scan qrcode" icon="pi pi-plus" class="p-button-success p-mr-2" ></button>
-
+                      <button pButton [routerLink]="['template/fiche', file[0],file[2],file[4]]" pRipple label="ajouter fiche" icon="pi pi-plus" class="p-button-success p-mr-2"  ></button>
                         <button pButton  [routerLink]="['template/exportfiche', file[0]]" pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
 
                    </tr>

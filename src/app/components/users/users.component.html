@@ -7,35 +7,24 @@
         </div>
     </div>
 </div>
-
-
-
+ 
 <div class="row flex-row">
     <div class="my-sites-component col-md-12">
-        <div class="widget widget-07 has-shadow">
-
-
-           
-
-
-
+        <div class="widget widget-07 has-shadow"> 
             <div class="card">
                 <div class="body">
                     <p-toolbar styleClass="p-mb-4">
                         <ng-template pTemplate="left">
                             <h2> Users
                             </h2>
-                        </ng-template>
-
-
+                        </ng-template>  
                         <ng-template pTemplate="right">
                             <button pButton pRipple label="{{ 'HEADER.ADD' | translate }}" icon="pi pi-plus"
                                 class="p-button-success p-mr-2"
                                 (click)="ngxSmartModalService.getModal('myModal').open()"></button>
                             <!-- <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button> -->
                         </ng-template>
-                    </p-toolbar>
-
+                    </p-toolbar> 
                     <p-table #dt2 [value]="filterData" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
                         currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
                         [globalFilterFields]="['username','name','email' ]" [rowsPerPageOptions]="[10,25,50]">
@@ -50,15 +39,13 @@
                                         <i class="pi pi-search"></i>
                                         <input pInputText type="text" #gb
                                             (input)="dt2.filterGlobal($event.target.value, 'contains')"
-                                            placeholder="Search" />
+                                            placeholder="{{ 'Users.TableSearch' | translate}}" />
                                     </span>
                                 </div>
                             </div>
-                        </ng-template>
-
+                        </ng-template> 
                         <ng-template pTemplate="header">
-                            <tr> 
-
+                            <tr>  
                                 <th pSortableColumn="name"> name <p-sortIcon field="name"></p-sortIcon> 
                                 </th>
                                 <th pSortableColumn="email"> email <p-sortIcon field="email"></p-sortIcon> 

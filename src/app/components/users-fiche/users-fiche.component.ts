@@ -32,7 +32,7 @@ export class UsersFicheComponent implements OnInit  {
    newData: any;
   Fichea: fiche[] = [];
   Fiche: fiche;
-
+  loading : boolean ;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private calendarService: CalendarService,
@@ -54,40 +54,17 @@ export class UsersFicheComponent implements OnInit  {
     this.filterNewData =[] ;
     this. newData=[] ;
     let i = 0 ; 
+    this.loading = true ;
     this.route.params.subscribe(params => {  
       this.companyId = params['userid']; 
       this.ficheService.getAll().subscribe(data => {
-        console.log("all", data)
         if (data != null) {
           this.fiches = data;
-          this.fiches = this.fiches.filter(fiche => fiche.user.id == this.companyId)
-          this.filterData = this.fiches;
+           this.newData = this.fiches.filter(fiche => fiche.user.id == this.companyId)
+          this.filterNewData = this.newData;
+          console.log("data", this.fiches);
 
-          this.fiches.forEach(element => {
-
-            promises.push(this.deratisationService.get(element.id).toPromise());
-            promises.push(this.desinsectisationService.get(element.id).toPromise());
-
-            Promise.all(promises).then(results => { 
-              console.log("results", results);
-              fiche = {
-                nresponsable: element.nresponsable,
-                incerticide: element.incerticide,
-                nencadreur: element.nencadreur,
-                observations: element.observations,
-                harrive: element.harrive,
-                hdepart: element.hdepart,
-                deratisation: results[i],
-                desinsectisation: results[i+1],
-                user:element.user,
-                calendar:element.calendar
-              };
-              i= i+2;
-              this.newData.push(fiche);
-              this.filterNewData.push(fiche);
-              console.log("filterNewData",  this.filterNewData);
-            }); 
-          }); 
+          
         }
       });
     });

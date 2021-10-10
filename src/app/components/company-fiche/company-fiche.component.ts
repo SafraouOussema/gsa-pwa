@@ -59,34 +59,10 @@ export class CompanyFicheComponent implements OnInit {
         console.log("all", data)
         if (data != null) {
           this.fiches = data;
-          this.fiches = this.fiches.filter(fiche => fiche.company.id == this.companyId)
-          this.filterData = this.fiches;
+          this.newData = this.fiches.filter(fiche => fiche.company.id == this.companyId)
+          this.filterNewData = this.newData;
 
-          this.fiches.forEach(element => {
-
-            promises.push(this.deratisationService.get(element.id).toPromise());
-            promises.push(this.desinsectisationService.get(element.id).toPromise());
-
-            Promise.all(promises).then(results => { 
-              console.log("results", results);
-              fiche = {
-                nresponsable: element.nresponsable,
-                incerticide: element.incerticide,
-                nencadreur: element.nencadreur,
-                observations: element.observations,
-                harrive: element.harrive,
-                hdepart: element.hdepart,
-                deratisation: results[i],
-                desinsectisation: results[i+1],
-                user:element.user,
-                calendar:element.calendar
-              };
-              i= i+2;
-              this.newData.push(fiche) ;
-              this.filterNewData.push(fiche);
-              console.log("filterNewData",  this.filterNewData);
-            }); 
-          }); 
+          
         }
       });
     });

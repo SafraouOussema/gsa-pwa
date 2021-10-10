@@ -81,7 +81,13 @@ const routes: Routes = [
       {
         path: 'company/template/fiche/:companyid',
         component: CompanyFicheComponent
+      }, 
+       {
+        path: 'company/template/fiche/:companyid/template/exportfiche/:calanderid',
+        component: ExportFicheComponent
       },
+
+
       {
         path: 'user',
         component: UsersComponent
@@ -90,9 +96,14 @@ const routes: Routes = [
         path: 'users',
         component: UsersComponent
       }, {
+        path: 'users/template/fiche/:userid/template/exportfiche/:calanderid',
+        component: ExportFicheComponent
+      }
+      , {
         path: 'users/template/fiche/:userid',
         component: UsersFicheComponent
       }
+
       // ,{
       //   path: 'pm',
       //   component: PmComponent

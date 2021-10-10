@@ -1,24 +1,19 @@
 <section class="content">
     <div class="block-header">
         <div class="row">
-
         </div>
     </div>
     <div class="container-fluid">
-
         <!-- Advanced Validation -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="card">  
                     <div class="body"> 
-
                         <p-toolbar styleClass="p-mb-4">
                             <ng-template pTemplate="left">
                                 <h2>{{ 'PRODUCT.TITLE' | translate }}
                                 </h2>
                             </ng-template>
-
-
                             <ng-template pTemplate="right">
                                 <button pButton pRipple label="{{ 'HEADER.ADD' | translate }}" icon="pi pi-plus"
                                     class="p-button-success p-mr-2"
@@ -26,7 +21,6 @@
                                 <!-- <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button> -->
                             </ng-template>
                         </p-toolbar>
-
                         <p-table #dt2 [value]="niveaus" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
                             currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
                             [globalFilterFields]="['pname' ]" [rowsPerPageOptions]="[05,10,25,50]">
@@ -42,37 +36,30 @@
                                             <i class="pi pi-search"></i>
                                             <input pInputText type="text" #gb
                                                 (input)="dt2.filterGlobal($event.target.value, 'contains')"
-                                                placeholder="Search" />
+                                                placeholder="{{ 'Users.TableSearch' | translate}}" />
                                         </span>
                                     </div>
                                 </div>
                             </ng-template>
-
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th pSortableColumn="pname"> {{ 'PRODUCT.Name' | translate }} <p-sortIcon
                                             field="pname"></p-sortIcon>
- 
                                     </th>
-
                                     <th>
                                         {{ 'HEADER.ACTION' | translate }}
-
                                     </th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-file>
                                 <tr>
-
                                     <td>{{file.pname}}</td>
                                     <td>
-                                        <a (click)="remove(file.id)"><i class="la la-close delete"></i></a>
-
+                                        <a (click)="remove(file.id)"><i class="la la-close delete pointer"></i></a>
                                     </td>
                                 </tr>
                             </ng-template>
                         </p-table>
- 
                     </div>
                 </div> 
             </div> 
@@ -92,8 +79,7 @@
                         translate }}</div>
                 </div>
             </div>
-
-
+ 
             <div class="form-group">
                 <button class="btn btn-primary">{{ 'HEADER.ADD' | translate }}</button>
                 <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">

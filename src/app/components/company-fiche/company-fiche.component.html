@@ -1,19 +1,16 @@
- 
-
-
 <div class="row">
     <div class="page-header">
         <div class="d-flex align-items-center">
             <h2 class="page-header-title"> Fiche List </h2>
-            <div> 
+            <div>
             </div>
         </div>
     </div>
-  </div>
-  
-  
-  
-  <div  class="row flex-row">
+</div>
+
+
+
+<div class="row flex-row">
     <div class="my-sites-component col-md-12">
         <div class="widget widget-07 has-shadow">
             <div class="widget-header">
@@ -22,100 +19,69 @@
                         <div id="sorting-table_filter" class="dataTables_filter">
                             <div class=" faq">
                                 <div class="searchbox">
-                                    <input class="teamsfox-text" type="text" (keyup)='search($event.target.value)'> 
+                                    <input class="teamsfox-text" type="text" (keyup)='search($event.target.value)'>
                                 </div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
-            <div class="table-responsive table-scroll padding-right-10" style="max-height: 690px">
-                <div  *ngIf="filterNewData">
-                 
+            <div class="table-responsive table-scroll padding-right-10" >
+                <div *ngIf="filterNewData">
+ 
 
+                    <p-table #dt2 [value]="filterNewData" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                        currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
+                        [globalFilterFields]="['label','address']" [rowsPerPageOptions]="[05,10,25,50]">
+                        <ng-template pTemplate="caption">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <button pButton label="{{ 'Users.Clear' | translate}} " class="p-button-outlined"
+                                        icon="pi pi-filter-slash" (click)="clear(dt2)"></button>
+                                </div>
+                                <div class="col-md-3 offset-md-6" style="text-align: right;">
+                                    <span class="p-input-icon-left p-ml-auto">
+                                        <i class="pi pi-search"></i>
+                                        <input pInputText type="text"
+                                            (input)="dt2.filterGlobal($event.target.value, 'contains')"
+                                            placeholder="{{ 'Users.TableSearch' | translate}}" />
+                                    </span>
+                                </div>
+                            </div>
+                        </ng-template>
 
-
-                  <p-table #dt2 [value]="filterNewData" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-                  currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
-                  [globalFilterFields]="['label','address']" [rowsPerPageOptions]="[10,25,50]">
-                  <ng-template pTemplate="caption">
-                      <div class="row">
-                          <div class="col-md-3">
-                              <button pButton label="{{ 'Users.Clear' | translate}} " class="p-button-outlined"
-                                  icon="pi pi-filter-slash" (click)="clear(dt2)"></button>
-                          </div>
-                          <div class="col-md-3 offset-md-6" style="text-align: right;">
-                              <span class="p-input-icon-left p-ml-auto">
-                                  <i class="pi pi-search"></i>
-                                  <input pInputText type="text"
-                                      (input)="dt2.filterGlobal($event.target.value, 'contains')"
-                                      placeholder="Search" />
-                              </span>
-                          </div>
-                      </div>
-                  </ng-template>
-
-                  <ng-template pTemplate="header">
-                      <tr>
-                          <th pSortableColumn="calendar.date"> date<p-sortIcon field="calendar.date">  </p-sortIcon>
-                          </th>
-                          <th pSortableColumn="user.name"> utilisateur name <p-sortIcon   field="user.name"></p-sortIcon>
-                          </th>
-                          <th>heure arriver</th>
-                          <th>  heure depart </th>
-                          <th> incerticide </th>
-                          <th> name encadreur </th>
-                          <th> name responsable </th>
-                          <th> observations </th>
-
-
-                      </tr>
-                  </ng-template>
-                  <ng-template pTemplate="body" let-file>
-                      <tr>
-                          <td>{{file.calendar.date}}</td>
-                          <td>{{file.user.name}}</td>
-                          <td>{{file.harrive}}</td>   
-                          <td>{{file.hdepart}}</td>  
-                           <td>{{file.incerticide}}</td>
-                           <td>{{file.nencadreur}}</td>
-                           <td>{{file.nresponsable}}</td> 
-                             <td>{{file.observations}}</td>
-
-   
-                             <td *ngFor="let desinsectisations of file.deratisation">
-                                {{desinsectisations.locaux.name}} 
-                                {{desinsectisations.acceder}}
-                                {{desinsectisations.false}} 
-                              </td>
-                              <td> ***** </td>
-                              <td *ngFor="let desinsectisations of file.desinsectisation">
-                                {{desinsectisations.locaux.name}} 
-                                {{desinsectisations.acceder}}
-                                {{desinsectisations.false}} 
-                              </td>
-
-
-
-
-                      </tr>
-                  </ng-template>
-              </p-table>
-
-
-
-
-
-
-
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortableColumn="calendar.date"> Date<p-sortIcon field="calendar.date">
+                                    </p-sortIcon>
+                                </th>
+                                <th pSortableColumn="user.name"> Nom utilisateur<p-sortIcon field="user.name">
+                                    </p-sortIcon>
+                                </th>
+                                <th> Heure arrivée</th>
+                                <th> Heure depart </th>  
+                                <th>
+                                    Fiche
+                                </th> 
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-file>
+                            <tr>
+                                <td>{{file.calendar.date}}</td>
+                                <td>{{file.user.name}}</td>
+                                <td>{{file.harrive}}</td>
+                                <td>{{file.hdepart}}</td>
+                                <td>
+                                    <button pButton [routerLink]="['template/exportfiche', file.calendar.id]" pRipple
+                                        label="Export" icon="pi pi-upload" class="p-button-help"></button>
+                                </td> 
+                            </tr>
+                        </ng-template>
+                    </p-table> 
                 </div>
-   
+  
             </div>
         </div>
     </div>
-  
-  </div>
-  
-  
-  
-  
+
+</div>
