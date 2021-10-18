@@ -21,6 +21,8 @@ import { UsersFicheComponent } from './components/users-fiche/users-fiche.compon
 import { ExportFicheComponent } from './components/export-fiche/export-fiche.component';
 import {  ScanQrcodeComponent } from './components/scan-qrcode/scan-qrcode.component';
 
+import { FicheClientComponent } from './components/fiche-client/fiche-client.component'; 
+
 const routes: Routes = [
 
   {
@@ -52,6 +54,11 @@ const routes: Routes = [
       {
         path: 'home/template/exportfiche/:calanderid',
         component: ExportFicheComponent
+      }, 
+      {
+        path:'home/template/ficheclient/:calanderid',
+        component:FicheClientComponent
+
       },
       {
         path: 'home/template/fiche/:calanderid/:companyid/:userid',
@@ -87,6 +94,10 @@ const routes: Routes = [
         component: ExportFicheComponent
       },  
       {
+        path: 'company/template/fiche/:companyid/template/ficheclient/:calanderid',
+        component: FicheClientComponent
+      },   
+      {
         path: 'user',
         component: UsersComponent
       },
@@ -96,7 +107,10 @@ const routes: Routes = [
       }, {
         path: 'users/template/fiche/:userid/template/exportfiche/:calanderid',
         component: ExportFicheComponent
-      }
+      }, {
+        path: 'users/template/fiche/:userid/template/ficheclient/:calanderid',
+        component: FicheClientComponent
+      }  
       , {
         path: 'users/template/fiche/:userid',
         component: UsersFicheComponent

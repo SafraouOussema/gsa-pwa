@@ -89,7 +89,7 @@
     <h1>{{ 'CALENDAR.TITLE' | translate }}</h1>
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <div class="form-group">
-        <label for="date">date</label>
+        <label for="date">Date</label>
         <input type="date" class="form-control" name="label" [(ngModel)]="form.date" #date="ngModel" required />
         <div *ngIf="f.submitted && date.invalid">
           <div *ngIf="date.errors.required">{{ 'CALENDAR.DATE' | translate }} {{ 'HEADER.ISREQUIRED' | translate }}
@@ -98,14 +98,16 @@
       </div>
 
       <div class="row"> 
-        <div class="col-sm-6">
+        <div class="col-sm-12"> 
+          <label for="selecteduser">Utilisateur</label> 
           <select [(ngModel)]="selecteduser" name="mater" class="form-control selectpicker show-tick title">
             <option *ngFor="let user of users" [value]="user.id">
               {{ user.name }} </option>
           </select>
           <p *ngIf="selecteduser"> {{ 'CALENDAR.EMPLOYED' | translate }} {{ 'HEADER.SELECT' | translate }} </p>
         </div> 
-        <div class="col-sm-6">
+        <div class="col-sm-12"> 
+          <label for="selectedcompany">Entreprise</label>   
           <select [(ngModel)]="selectedcompany" name="profile" class="form-control selectpicker show-tick">
             <option *ngFor="let company of companys" [value]="company.id">
               {{ company.label }} </option>
@@ -114,7 +116,7 @@
         </div> 
       </div>
 
-      <div class="form-group">
+      <div class="padding-button-add col-sm-12">
         <button class="btn btn-primary">{{ 'HEADER.ADD' | translate }} </button>
         <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
           erreur!<br />{{errorMessage}}

@@ -11,7 +11,7 @@
                     <div class="body"> 
                         <p-toolbar styleClass="p-mb-4">
                             <ng-template pTemplate="left">
-                                <h2> {{ 'COMPANY.lOCAL' | translate }}
+                                <h2> Locaux
                                 </h2>
                             </ng-template>
 
@@ -68,7 +68,7 @@
                                         <qrcode [qrdata]="file.name" [size]="150" [level]="'M'"></qrcode>
                                     </td>
                                     <td> 
-                                        <a (click)="remove(file.id)"><i class="la la-close delete"></i></a> 
+                                        <a (click)="remove(file.id)"><i class="la la-close delete pointer"></i></a> 
                                     </td>
                                 </tr>
                             </ng-template>
@@ -82,10 +82,10 @@
 
     <!-- Begin Basic Modal -->
     <ngx-smart-modal #myModal identifier="myModal">
-        <h1> {{ 'COMPANY.lOCAL' | translate }} </h1>
+        <h1> Ajouter un local </h1>
 
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="name"> {{ 'COMPANY.NAME' | translate }} </label>
                 <input type="text" class="form-control" name="label" [(ngModel)]="form.name" #label="ngModel"
                     required />
@@ -96,7 +96,7 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="padding-button-add col-sm-12">
                 <button class="btn btn-primary">{{ 'HEADER.ADD' | translate }}</button>
                 <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
                     erreur!<br />{{errorMessage}}

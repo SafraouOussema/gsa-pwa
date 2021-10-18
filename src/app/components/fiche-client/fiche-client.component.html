@@ -1,10 +1,10 @@
 <section *ngIf="fiches" class="content">
     <div class="block-header">
         <div class="row">
-            <div class="col-lg-10 col-md-10 col-sm-12">
+            <div class="col-lg-7 col-md-6 col-sm-12">
                 <h2>{{ "FICHE.TITLE" | translate }}</h2>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-12">
+            <div class="col-lg-5 col-md-6 col-sm-12">
                 <button pButton pRipple label="Export" icon="la la-file-pdf-o" class="p-button-success p-mr-2"
                     (click)="open()"></button>
             </div>
@@ -41,7 +41,7 @@
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th>Nom d'opérateur: {{ fiches[8] }}</th>
+                                    <th>Nom des opérateurs: {{ fiches[8] }}</th>
                                 </tr>
                             </thead>
                         </table>
@@ -53,8 +53,8 @@
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th>Deratisation</th>
                                     <th></th>
+                                    <th>Deratisation</th>
                                 </tr>
                             </thead>
                         </table>
@@ -63,8 +63,8 @@
                             <thead>
                                 <tr>
                                     <th>Locaux</th>
+                                    <!-- <th>passage</th> -->
                                     <th>Produit</th>
-                                    <th>Quantité</th>
                                     <th>Heure arrivée</th>
                                     <th>Heure départ</th>
 
@@ -73,8 +73,8 @@
                             <tbody>
                                 <tr *ngFor="let deratisation of deratisations">
                                     <td>{{ deratisation.locaux.name }}</td>
+                                    <!-- <td>{{ deratisation.acceder }}</td> -->
                                     <td>{{ deratisation.produit.pname }}</td>
-                                    <td>{{ deratisation.quantite }}</td>
                                     <td>{{ findLocal(deratisation,"arrivee") }}</td>
                                     <td>{{ findLocal(deratisation,"depart") }}</td>
 
@@ -88,8 +88,8 @@
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th>desinsectisation</th>
                                     <th></th>
+                                    <th>desinsectisation</th>
                                 </tr>
                             </thead>
                         </table>
@@ -98,8 +98,8 @@
 
                                 <tr>
                                     <th>Locaux</th>
+                                    <!-- <th>passage</th> -->
                                     <th>Produit</th>
-                                    <th>Quantité</th>
                                     <th>Heure arrivée</th>
                                     <th>Heure départ</th>
                                 </tr>
@@ -107,8 +107,8 @@
                             <tbody>
                                 <tr *ngFor="let desinsectisation of desinsectisations">
                                     <td>{{ desinsectisation.locaux.name }}</td>
+                                    <!-- <td>{{ desinsectisation.acceder }}</td> -->
                                     <td>{{ desinsectisation.produit.pname }}</td>
-                                    <td>{{ desinsectisation.quantite }}</td>
                                     <td>{{ findLocal(desinsectisation,"arrivee") }}</td>
                                     <td>{{ findLocal(desinsectisation,"depart") }}</td>
                                 </tr>

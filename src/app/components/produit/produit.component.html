@@ -70,7 +70,7 @@
     <ngx-smart-modal #myModal identifier="myModal">
         <h1>{{ 'PRODUCT.TITLE' | translate }}</h1>
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="pname">{{ 'PRODUCT.TITLE' | translate }}</label>
                 <input type="text" class="form-control" name="label" [(ngModel)]="form.pname" #label="ngModel"
                     required />
@@ -80,7 +80,7 @@
                 </div>
             </div>
  
-            <div class="form-group">
+            <div class="padding-button-add col-sm-12">
                 <button class="btn btn-primary">{{ 'HEADER.ADD' | translate }}</button>
                 <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
                     erreur!<br />{{errorMessage}}

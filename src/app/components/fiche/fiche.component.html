@@ -38,7 +38,7 @@
                             </ng-template>
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th> {{ 'FICHE.RESPONSIBLENAME' | translate }}   </th>
+                                    <th> {{ 'FICHE.RESPONSIBLENAME' | translate }} </th>
                                     <th> {{ 'FICHE.UNCERTICIDE' | translate }}
                                     </th>
                                     <th>
@@ -56,8 +56,12 @@
                                     <th>
                                         {{ 'HEADER.ACTION' | translate }}
                                     </th>
-
-
+                                    <th>
+                                        Deratisation
+                                    </th>
+                                    <th>
+                                        Desinsectisation
+                                    </th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-file>
@@ -68,14 +72,19 @@
                                     <td>{{file.observations}}</td>
                                     <td>{{file.harrive}}</td>
                                     <td>{{file.hdepart}}</td>
-
-                                    <td> <a (click)="remove(file.id)"><i class="la la-close delete pointer"></i></a> </td>
-                                    <td> <a mat-button
-                                            [routerLink]="['template/deratisation', file.id,file.company.id]">
-                                            deratisation</a></td>
-                                    <td> <a mat-button
-                                            [routerLink]="['template/desinsectisation', file.id,file.company.id]">
-                                            desinsectisation</a></td> 
+ 
+                                    <td> <a (click)="remove(file.id)"><i class="la la-close delete pointer"></i></a>
+                                    </td>
+                                    <td>
+                                        <button pButton pRipple label=" Ajouter" icon="pi pi-plus"
+                                            class="p-button-success p-mr-2"
+                                            [routerLink]="['template/deratisation', file.id,file.company.id]"></button>
+                                    </td>
+                                    <td>
+                                        <button pButton pRipple label=" Ajouter" icon="pi pi-plus"
+                                            class="p-button-success p-mr-2"
+                                            [routerLink]="['template/desinsectisation', file.id,file.company.id]"></button>
+                                    </td>
                                 </tr>
                             </ng-template>
                         </p-table>
@@ -85,7 +94,7 @@
         </div>
         <!-- Begin Basic Modal -->
         <ngx-smart-modal #myModal identifier="myModal">
-            <h1>Title</h1>
+            <h1>Fiche</h1>
             <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                 <div class="form-group">
                     <label for="nresponsable">Nom responsable</label>
@@ -119,7 +128,7 @@
                         <div *ngIf="label.errors.required">observations is required</div>
                     </div>
                 </div>
-               
+
 
                 <div class="form-group">
                     <button class="btn btn-primary">Ajouter</button>
@@ -128,7 +137,6 @@
                     </div>
                 </div>
             </form>
-            <button (click)="myModal.close()">Close</button>
         </ngx-smart-modal>
     </div>
     <!-- End Basic Modal -->

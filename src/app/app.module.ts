@@ -39,6 +39,8 @@ import { httpInterceptorProviders } from './components/auth/auth-interceptor';
 
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 
+import { MessagesModule } from 'primeng/messages';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -48,13 +50,14 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
-import { InputTextModule } from 'primeng/inputtext'; 
-import {ToolbarModule} from 'primeng/toolbar';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToolbarModule } from 'primeng/toolbar';
 import { ExportFicheComponent } from './components/export-fiche/export-fiche.component';
 import { NgQrScannerModule } from 'angular2-qrscanner';
 import { ScanQrcodeComponent } from './components/scan-qrcode/scan-qrcode.component';
 
-import { ZXingScannerModule } from '@zxing/ngx-scanner';
+ import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { FicheClientComponent } from './components/fiche-client/fiche-client.component'; 
 
 
 
@@ -83,13 +86,16 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FicheComponent,
     TemplateComponent,
     ExportFicheComponent,
-    ScanQrcodeComponent
+    ScanQrcodeComponent,
+    FicheClientComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FontAwesomeModule,
-    FormsModule,
+    FormsModule, 
+    MessagesModule, 
+    ConfirmDialogModule,
     ToasterModule,
     QRCodeModule,
     TableModule,
@@ -127,4 +133,3 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 })
 export class AppModule { }
 
- 

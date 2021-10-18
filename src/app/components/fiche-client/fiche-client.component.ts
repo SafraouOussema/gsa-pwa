@@ -8,13 +8,12 @@ import { ScanedCodeService } from '../../service/scaned-code.service';
 import { DatePipe } from '@angular/common';
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-
 @Component({
-  selector: 'app-export-fiche',
-  templateUrl: './export-fiche.component.html',
-  styleUrls: ['./export-fiche.component.css']
+  selector: 'app-fiche-client',
+  templateUrl: './fiche-client.component.html',
+  styleUrls: ['./fiche-client.component.css']
 })
-export class ExportFicheComponent implements OnInit {
+export class FicheClientComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -45,9 +44,8 @@ export class ExportFicheComponent implements OnInit {
         promises.push(this.desinsectisationService.get(this.fiches[0]).toPromise())
         promises.push(this.scanedCodeService.getScanedCodeByCalanderId(id).toPromise())
 
- 
+
         return Promise.all(promises).then(results => {
-          console.log(results)
           this.deratisations = results[0];
           this.desinsectisations = results[1];
 
@@ -94,16 +92,13 @@ export class ExportFicheComponent implements OnInit {
 
     const doc = new jsPDF();
 
-
-
-    
-    autoTable(doc, { html: '#my-header'    });
+    autoTable(doc, { html: '#my-header' });
     autoTable(doc, { html: '#my-der-title' });
     autoTable(doc, { html: '#my-der' });
     autoTable(doc, { html: '#my-des-title' });
     autoTable(doc, { html: '#my-des' });
     autoTable(doc, { html: '#my-table' });
-    autoTable(doc, { html: '#my-signe', styles: { halign: 'center', valign: "middle", cellWidth: 50 }, bodyStyles: { cellWidth: 60, minCellWidth: 60, minCellHeight: 30  } });
+    autoTable(doc, { html: '#my-signe', styles: { halign: 'center', valign: "middle", cellWidth: 50 }, bodyStyles: { cellWidth: 60, minCellWidth: 60, minCellHeight: 30 } });
 
     doc.save(this.fiches[9] + ".pdf");
 

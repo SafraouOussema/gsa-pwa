@@ -57,6 +57,9 @@
                                 <th>
                                     Fiche
                                 </th> 
+                                <th> 
+                                    Fiche client
+                                </th> 
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-file>
@@ -69,6 +72,11 @@
                                     <button pButton [routerLink]="['template/exportfiche', file.calendar.id]" pRipple
                                         label="Export" icon="pi pi-upload" class="p-button-help"></button>
                                 </td> 
+                                <td>
+                                    <button pButton [routerLink]="['template/ficheclient', file.calendar.id]" pRipple
+                                        label="Export" icon="pi pi-upload" class="p-button-help"></button>
+                                </td> 
+  
                             </tr>
                         </ng-template>
                     </p-table> 

@@ -24,7 +24,7 @@
 
                 <p-toolbar styleClass="p-mb-4">
                     <ng-template pTemplate="left">
-                      <h2>{{ 'CALENDAR.TITLE' | translate }}
+                      <h2>Entreprise
                       </h2>
                     </ng-template>
       
@@ -76,15 +76,20 @@
                             <td>{{file.label}}</td>
                             <td>{{file.address}}</td>
                             <td>
-                                <a mat-button [routerLink]="['template/fiche', file.id]">
-                                    Les lists de fiche
-                                </a>
+                              
+                                <button pButton pRipple label="Afficher" icon="la la-folder-open"
+                                class="p-button-success p-mr-2" [routerLink]="['template/fiche', file.id]"
+                                ></button>
                             </td>
 
                             <td>
-                                <a mat-button [routerLink]="['template/locaux', file.id]">
-                                    Ajouter des locaux 
-                                </a>
+                                
+                                <button pButton pRipple label=" Ajouter des locaux" icon="pi pi-plus"
+                                class="p-button-success p-mr-2" [routerLink]="['template/locaux', file.id]"
+                                ></button>
+                              
+                                
+
                             </td>
 
                             <td>
@@ -105,10 +110,10 @@
 
 
 <ngx-smart-modal #myModal identifier="myModal">
-    <h1> {{ 'HEADER.ADD' | translate }} {{ 'COMPANY.TITLE' | translate }} </h1>
+    <h1> Ajouter une entreprise </h1>
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-        <div class="form-group">
-            <label for="label"> {{ 'COMPANY.NAME' | translate }} {{ 'COMPANY.TITLE' | translate }} </label>
+        <div class=" col-sm-12">
+            <label for="label"> {{ 'COMPANY.NAME' | translate }}  </label>
             <input type="text" class="form-control" name="label" [(ngModel)]="form.label" #label="ngModel" required />
             <div *ngIf="f.submitted && label.invalid">
                 <div *ngIf="label.errors.required">{{ 'COMPANY.ADD' | translate }} {{ 'HEADER.ISREQUIRED' | translate }}
@@ -116,7 +121,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="col-sm-12">
             <label for="address"> {{ 'COMPANY.ADDRESS' | translate }} </label>
             <input type="text" class="form-control" name="username" [(ngModel)]="form.address" #address="ngModel"
                 required />
@@ -125,7 +130,7 @@
                     translate }} </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="padding-button-add col-sm-12">
             <button class="btn btn-primary">{{ 'HEADER.ADD' | translate }}</button>
             <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
                 erreur!<br />{{errorMessage}}

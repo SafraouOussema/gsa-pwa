@@ -86,15 +86,17 @@
                                     <ng-template #third class="teamsfox-text">
                                         <ng-container *ngIf="file.roles[0].name =='ROLE_USER'">
                                             <td>
-                                                User
+                                                utilisateur
                                             </td>
                                         </ng-container>
                                     </ng-template>
                                     <!-- end roles -->
                                     <td>
-                                        <a mat-button [routerLink]="['template/fiche', file.id]">
-                                            Les lists de fiche
-                                        </a>
+
+                                        <button pButton pRipple label="Afficher" icon="la la-folder-open"
+                                            class="p-button-success p-mr-2"
+                                            [routerLink]="['template/fiche', file.id]"></button>
+
                                     </td>
                                 </tr>
                             </ng-template>
@@ -108,9 +110,9 @@
 
 
     <ngx-smart-modal #myModal identifier="myModal">
-        <h1> {{ 'HEADER.ADD' | translate }} {{ 'COMPANY.TITLE' | translate }} </h1>
+        <h1>Ajouter un utilisateur </h1>
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="name"> {{ 'MEMBER.NAME' | translate }} </label>
                 <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
                 <div *ngIf="f.submitted && name.invalid">
@@ -119,7 +121,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="username"> {{ 'MEMBER.USERNAME' | translate }} </label>
                 <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
                     required />
@@ -130,7 +132,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="address"> {{ 'MEMBER.ADDRESS' | translate }} </label>
                 <input type="text" class="form-control" name="username" [(ngModel)]="form.address" #address="ngModel"
                     required />
@@ -140,7 +142,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="email"> {{ 'MEMBER.EMAIL' | translate }} </label>
                 <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required
                     email />
@@ -152,7 +154,7 @@
                     <div *ngIf="email.errors.email">{{ 'MEMBER.EMAILVALID' | translate }} </div>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="col-sm-12">
                 <label for="password"> {{ 'COMPANY.PASSWORD' | translate }} </label>
                 <input type="password" class="form-control" name="password" [(ngModel)]="form.password"
                     #password="ngModel" required minlength="6" />
@@ -164,19 +166,18 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class=" col-sm-12">
                 <label for="password"> Role </label>
-
                 <select [(ngModel)]="selectedRole" name="profile" class="form-control selectpicker show-tick">
                     <option *ngFor="let company of listRole" [value]="company.value">
                         {{ company.name }} </option>
                 </select>
-                <p *ngIf="selectedRole">Role choisit. </p>
+                <p *ngIf="selectedRole">Role est choisi </p>
             </div>
 
 
 
-            <div class="form-group">
+            <div class="padding-button-add col-sm-12">
                 <button class="btn btn-primary"> {{ 'HEADER.ADD' | translate }} </button>
                 <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
                     Signup failed!<br />{{errorMessage}}

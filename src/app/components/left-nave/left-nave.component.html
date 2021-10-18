@@ -1,48 +1,45 @@
 <div class="default-sidebar">
 
-    <!-- Begin Side Navbar  shrinked -->
-    <nav class="side-navbar box-scroll sidebar-scroll  ">
-      <!-- Begin Main Navigation -->
-      <ul class="list-unstyled">
-        <!-- home   -->
-        <li *ngIf="authority === 'admin'">
-          <a routerLink="home"><i class="la la-home">
-            </i><span>home</span>
-          </a>
-        </li>
-        <!-- calendar   -->
-        <li *ngIf="authority === 'admin'">
-          <a routerLink="calendar"><i class="la la-calendar">
-            </i><span>{{ 'CALENDAR.TITLE' | translate }}</span>
-          </a>
-        </li>
-        <!-- produit -->
-        <li *ngIf="authority === 'admin'">
-          <a routerLink="produit"><i class="la la-spinner">
-            </i><span>{{ 'PRODUCT.TITLE' | translate }}</span>
-          </a>
-        </li>
-  
-  
-        <!-- company -->
-        <li *ngIf="authority === 'admin'">
-          <a routerLink="company"><i class="la la-building">
-            </i><span>{{ 'COMPANY.TITLE' | translate }}</span>
-          </a>
-        </li>
-        
-   <!-- users -->
-   <li *ngIf="authority === 'admin' ">
-    <a routerLink="users"><i class="la la-user-plus">
-      </i><span> List users</span>
-    </a>
-  </li>
-  
-      </ul>
-  
-  
-      <!-- End Main Navigation -->
-    </nav>
-    <!-- End Side Navbar -->
-  </div>
-  <!-- End Left Sidebar -->
+  <!-- Begin Side Navbar  shrinked -->
+  <nav class="side-navbar box-scroll sidebar-scroll  ">
+    <!-- Begin Main Navigation -->
+    <ul class="list-unstyled">
+      <!-- home   -->
+      <li *ngIf="authority === 'admin'">
+        <a routerLink="home"><i class="la la-home">
+          </i><span>home</span>
+        </a>
+      </li>
+      <!-- calendar   -->
+      <li *ngIf="authority === 'admin'">
+        <a routerLink="calendar"><i class="la la-calendar">
+          </i><span>{{ 'CALENDAR.TITLE' | translate }}</span>
+        </a>
+      </li>
+      <!-- produit -->
+      <li *ngIf="authority === 'admin'">
+        <a routerLink="produit"><i class="la la-spinner">
+          </i><span>{{ 'PRODUCT.TITLE' | translate }}</span>
+        </a>
+      </li>
+
+
+      <!-- company -->
+      <li *ngIf="authority === 'admin'">
+        <a routerLink="company"><i class="la la-building">
+          </i><span>{{ 'COMPANY.TITLE' | translate }}</span>
+        </a>
+      </li>
+
+      <!-- users -->
+      <li *ngIf="authority === 'admin' ">
+        <a routerLink="users"><i class="la la-user-plus">
+          </i><span> Utilisateur</span>
+        </a>
+      </li> 
+    </ul>  
+    <!-- End Main Navigation -->
+  </nav>
+  <!-- End Side Navbar -->
+</div>
+<!-- End Left Sidebar -->

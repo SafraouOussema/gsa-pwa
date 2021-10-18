@@ -31,11 +31,10 @@
                                 <!-- <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button> -->
                             </ng-template>
                         </p-toolbar>
- 
+
                         <p-table #dt2 [value]="gcs" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
                             currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
-                            [globalFilterFields]="['locaux.name','produit.pname']"
-                            [rowsPerPageOptions]="[10,25,50]">
+                            [globalFilterFields]="['locaux.name','produit.pname']" [rowsPerPageOptions]="[10,25,50]">
                             <ng-template pTemplate="caption">
                                 <div class="row">
                                     <div class="col-md-3">
@@ -106,8 +105,8 @@
         <h1> {{ 'HEADER.ADD' | translate }} {{ 'DERATIZATION.TITLE' | translate }}</h1>
 
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-            <div class="col-sm-6">
-                <p> choisir un produit</p>
+            <div class="col-sm-12">
+                <label for="selectedproduit">Choisir un produit</label>
                 <select [(ngModel)]="selectedproduit" name="mater" class="form-control selectpicker show-tick">
                     <option *ngFor="let user of produits" [value]="user.id">
                         {{ user.pname }} </option>
@@ -116,19 +115,18 @@
                 <p *ngIf="selectedproduit"> produit choisit. </p>
             </div>
 
-            <div class="col-sm-6">
-                <p> choisir un locau</p>
-
+            <div class="col-sm-12">
+                <label for="selectedlocaux">Choisir un local</label>
                 <select [(ngModel)]="selectedlocaux" name="profile" class="form-control selectpicker show-tick">
                     <option *ngFor="let company of niveaus" [value]="company.id">
                         {{ company.name }} </option>
 
                 </select>
-                <p *ngIf="selectedlocaux">locaux choisit. </p>
+                <p *ngIf="selectedlocaux">Local choisi</p>
             </div>
 
-            <div class="form-group">
-                <label for="nresponsable">quantite</label>
+            <div class="col-sm-12">
+                <label for="nresponsable">Quantité</label>
                 <input type="number" class="form-control" name="quantite" [value]="0" [(ngModel)]="form.quantite"
                     #label="ngModel" required />
 
@@ -136,7 +134,7 @@
 
 
 
-            <div class="form-group">
+            <div class="padding-button-add col-sm-12">
                 <button class="btn btn-primary">{{ 'HEADER.ADD' | translate }} </button>
                 <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
                     erreur!<br />{{errorMessage}}
