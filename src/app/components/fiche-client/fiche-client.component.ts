@@ -30,6 +30,7 @@ export class FicheClientComponent implements OnInit {
   desinsectisations: any;
   dateList = [];
 
+  haveFiche : boolean  ;
 
   ngOnInit() {
     this.dateList = [];
@@ -37,36 +38,43 @@ export class FicheClientComponent implements OnInit {
     this.route.params.subscribe(params => {
       let promises: Promise<any>[] = [];
       const id = params['calanderid'];
-
+    
       this.ficheService.gettest(id).toPromise().then(res => {
         this.fiches = res[0];
-        promises.push(this.deratisationService.get(this.fiches[0]).toPromise())
-        promises.push(this.desinsectisationService.get(this.fiches[0]).toPromise())
-        promises.push(this.scanedCodeService.getScanedCodeByCalanderId(id).toPromise())
-
+        console.log(this.fiches)
+        if (this.fiches != undefined && this.fiches != null) {
+          this.haveFiche = true ;
+          promises.push(this.deratisationService.get(this.fiches[0]).toPromise())
+          promises.push(this.desinsectisationService.get(this.fiches[0]).toPromise())
+          promises.push(this.scanedCodeService.getScanedCodeByCalanderId(id).toPromise())
+        }
+        else {
+          this.haveFiche = false ;
+          promises.push(null)
+        }
 
         return Promise.all(promises).then(results => {
-          this.deratisations = results[0];
-          this.desinsectisations = results[1];
 
-          results[2].forEach(element => {
+          if (results[0] != null) {
+            this.deratisations = results[0];
+            this.desinsectisations = results[1];
 
-            let firstDate = new Date(element.date + " " + element.time)
-            firstDate.getTime();
-            let createDate = {
-              id: element.locaux.id,
-              date: firstDate,
-              time: firstDate.getTime()
-            }
-            this.dateList.push(createDate);
-          });
-          this.dateList.sort((a, b) => (a.color > b.color) ? 1 : -1)
+            results[2].forEach(element => {
 
+              let firstDate = new Date(element.date + " " + element.time)
+              firstDate.getTime();
+              let createDate = {
+                id: element.locaux.id,
+                date: firstDate,
+                time: firstDate.getTime()
+              }
+              this.dateList.push(createDate);
+            });
+            this.dateList.sort((a, b) => (a.color > b.color) ? 1 : -1)
+          }
         });
       });
-
     });
-
   }
 
   findLocal(local, type) {

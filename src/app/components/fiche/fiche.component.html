@@ -12,82 +12,87 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="body">
-                        <p-toolbar styleClass="p-mb-4">
-                            <ng-template pTemplate="left">
-                                <h2>{{ 'FICHE.TITLE' | translate }} </h2>
-                            </ng-template>
-                            <ng-template pTemplate="right">
-                                <button pButton pRipple label="{{ 'HEADER.ADD' | translate }}" icon="pi pi-plus"
-                                    class="p-button-success p-mr-2"
-                                    (click)="ngxSmartModalService.getModal('myModal').open()"></button>
-                                <!-- <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button> -->
-                            </ng-template>
-                        </p-toolbar>
-                        <p-table #dt2 [value]="fiches" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-                            currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
-                            [globalFilterFields]="['date','user.name','company.label']"
-                            [rowsPerPageOptions]="[10,25,50]">
-                            <ng-template pTemplate="caption">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        {{myDate | date:'yyyy-MM-dd'}}
+                        <div *ngIf="dateList.length>0"> 
+                            <p-toolbar styleClass="p-mb-4">
+                                <ng-template pTemplate="left">
+                                    <h2>{{ 'FICHE.TITLE' | translate }} </h2>
+                                </ng-template>
+                                <ng-template pTemplate="right">
+                                    <button pButton pRipple label="{{ 'HEADER.ADD' | translate }}" icon="pi pi-plus"
+                                        class="p-button-success p-mr-2"
+                                        (click)="ngxSmartModalService.getModal('myModal').open()"></button>
+                                    <!-- <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button> -->
+                                </ng-template>
+                            </p-toolbar>
+                            <p-table #dt2 [value]="fiches" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                                currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
+                                [globalFilterFields]="['date','user.name','company.label']"
+                                [rowsPerPageOptions]="[10,25,50]">
+                                <ng-template pTemplate="caption">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            {{myDate | date:'yyyy-MM-dd'}}
+                                        </div>
+                                        <div class="col-md-3 offset-md-6" style="text-align: right;">
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 offset-md-6" style="text-align: right;">
-                                    </div>
-                                </div>
-                            </ng-template>
-                            <ng-template pTemplate="header">
-                                <tr>
-                                    <th> {{ 'FICHE.RESPONSIBLENAME' | translate }} </th>
-                                    <th> {{ 'FICHE.UNCERTICIDE' | translate }}
-                                    </th>
-                                    <th>
-                                        {{ 'FICHE.SUPERVISORNAME' | translate }}
-                                    </th>
-                                    <th>
-                                        {{ 'FICHE.OBSERVATIONS' | translate }}
-                                    </th>
-                                    <th>
-                                        {{ 'FICHE.ARRIVALTIME' | translate }}
-                                    </th>
-                                    <th>
-                                        {{ 'FICHE.DEPARTURETIME' | translate }}
-                                    </th>
-                                    <th>
-                                        {{ 'HEADER.ACTION' | translate }}
-                                    </th>
-                                    <th>
-                                        Deratisation
-                                    </th>
-                                    <th>
-                                        Desinsectisation
-                                    </th>
-                                </tr>
-                            </ng-template>
-                            <ng-template pTemplate="body" let-file>
-                                <tr>
-                                    <td>{{file.nresponsable}}</td>
-                                    <td>{{file.incerticide}}</td>
-                                    <td>{{file.nencadreur}}</td>
-                                    <td>{{file.observations}}</td>
-                                    <td>{{file.harrive}}</td>
-                                    <td>{{file.hdepart}}</td>
- 
-                                    <td> <a (click)="remove(file.id)"><i class="la la-close delete pointer"></i></a>
-                                    </td>
-                                    <td>
-                                        <button pButton pRipple label=" Ajouter" icon="pi pi-plus"
-                                            class="p-button-success p-mr-2"
-                                            [routerLink]="['template/deratisation', file.id,file.company.id]"></button>
-                                    </td>
-                                    <td>
-                                        <button pButton pRipple label=" Ajouter" icon="pi pi-plus"
-                                            class="p-button-success p-mr-2"
-                                            [routerLink]="['template/desinsectisation', file.id,file.company.id]"></button>
-                                    </td>
-                                </tr>
-                            </ng-template>
-                        </p-table>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th> {{ 'FICHE.RESPONSIBLENAME' | translate }} </th>
+                                        <th> {{ 'FICHE.UNCERTICIDE' | translate }}
+                                        </th>
+                                        <th>
+                                            {{ 'FICHE.SUPERVISORNAME' | translate }}
+                                        </th>
+                                        <th>
+                                            {{ 'FICHE.OBSERVATIONS' | translate }}
+                                        </th>
+                                        <th>
+                                            {{ 'FICHE.ARRIVALTIME' | translate }}
+                                        </th>
+                                        <th>
+                                            {{ 'FICHE.DEPARTURETIME' | translate }}
+                                        </th>
+                                        <th>
+                                            {{ 'HEADER.ACTION' | translate }}
+                                        </th>
+                                        <th>
+                                            Deratisation
+                                        </th>
+                                        <th>
+                                            Desinsectisation
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-file>
+                                    <tr>
+                                        <td>{{file.nresponsable}}</td>
+                                        <td>{{file.incerticide}}</td>
+                                        <td>{{file.nencadreur}}</td>
+                                        <td>{{file.observations}}</td>
+                                        <td>{{file.harrive}}</td>
+                                        <td>{{file.hdepart}}</td>
+
+                                        <td> <a (click)="remove(file.id)"><i class="la la-close delete pointer"></i></a>
+                                        </td>
+                                        <td>
+                                            <button pButton pRipple label=" Ajouter" icon="pi pi-plus"
+                                                class="p-button-success p-mr-2"
+                                                [routerLink]="['template/deratisation', file.id,file.company.id]"></button>
+                                        </td>
+                                        <td>
+                                            <button pButton pRipple label=" Ajouter" icon="pi pi-plus"
+                                                class="p-button-success p-mr-2"
+                                                [routerLink]="['template/desinsectisation', file.id,file.company.id]"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table> 
+                        </div> 
+                        <div class="msg-alert" *ngIf="dateList.length==0">
+                            il faut scanner les QR Code avant de créer une fiche de passage
+                        </div>
                     </div>
                 </div>
             </div>

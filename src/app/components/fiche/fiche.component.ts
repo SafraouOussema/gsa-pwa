@@ -108,7 +108,7 @@ export class FicheComponent implements OnInit {
     promises.push(this.companyService.getAll().toPromise());
     promises.push(this.ficheService.getAll().toPromise());
     promises.push(this.scanedCodeService.getScanedCodeByCalanderId(this.selectedcalendar).toPromise())
-  
+   
     return Promise.all(promises).then(results => {
 
       console.log("find user", results) ;

@@ -10,4 +10,11 @@
 thead{ 
     background-color: #2980ba;
 }
- 
+
+.msg-alert { 
+    min-height: 200px;
+    text-align-last: center;
+    color: black;
+    font-size: 24px;
+    padding-top: 80px;
+  }
