@@ -11,13 +11,13 @@
       <div class="navbar-header">
         <a class="navbar-brand pointer">
           <div class="brand-image brand-big">
-            <img src="../../assets/logo.jpg" width="50" height="50" alt="logo" class="logo-small">
+            <img [routerLink]="['home']" src="../../assets/logo.jpg" width="50" height="50" alt="logo" class="logo-small">
           </div>
           <div class="brand-image brand-small">
             <!-- <img src="./assets/assets/img/logo.png" alt="logo" class="logo-small"> -->
-            <img src="../../assets/logo.jpg" width="50" height="50" alt="logo" class="logo-small">
+            <img  [routerLink]="['home']" src="../../assets/logo.jpg" width="50" height="50" alt="logo" class="logo-small">
           </div>
-        </a>
+        </a> 
         <!-- Toggle Button -->
         <a id="toggle-btn" class="menu-btn pointer" (click)="onOpen()">
           <span></span>
