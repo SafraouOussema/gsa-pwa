@@ -2,18 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class CompanyService {
-
+export class CompanyUserService {
 //http://localhost:8080
   //public API = 'https://gsa-backend.herokuapp.com/application';
   public API = 'http://localhost:8080/application';
  
-  public company_API = this.API + '/companys';
-   public companydelte_API = this.API+'/companys/';
+  public company_API = this.API + '/companyusers';
+   public companydelte_API = this.API+'/companyusers/';
 
 
 
@@ -22,18 +20,21 @@ export class CompanyService {
 
 
   getAll(): Observable<any> {
-    return this.http.get(this.API + '/companys');
+    return this.http.get(this.API + '/companyusers');
   }
-  get(id: string) {
-    return this.http.get(this.companydelte_API+id,{ responseType: 'json' });
+  get(idusers: string,idcompany: string) {
+    return this.http.get(this.companydelte_API+idusers+idcompany,{ responseType: 'json' });
   }
 
-  save(niv: any): Observable<any> {
+  getByUserName(username: string) {
+    return this.http.get(this.companydelte_API+username,{ responseType: 'json' });
+  }
+
+  save(companyUser: any,username:any,companyid:any,password:any): Observable<any> {
     let result: Observable<Object>;
-
     result = this.http.post(
-      this.company_API,
-      niv,
+      this.company_API+"/"+username+"/"+companyid+"/"+password,
+      companyUser,
       {headers :
           {
             'Content-Type': 'application/json'
@@ -42,8 +43,8 @@ export class CompanyService {
     );
 
     return result;
-
   }
+
 
 
   update(prof: any): Observable<any> {

@@ -115,14 +115,12 @@ export class DesinsectisationComponent implements OnInit {
 
 
   onSubmit() {
-    if (this.form.quantite == 0) {
-      this.form.acceder = false
-    } else {
+     
       this.form.acceder = true
-    }
+   
 
     this.Desinsectisation = new desinsectisation(this.form.acceder,
-      this.form.quantite);
+      0);
 
     this.desinsectisationService.save(this.Desinsectisation, this.fi, this.selectedlocaux, this.selectedproduit).subscribe(
       data => {

@@ -26,7 +26,7 @@
     "ADD": "Ajouter",
     "ISREQUIRED": "  est nécessaire ",
     "ACTION": "Action",
-    "SELECT": "sélectionner"
+    "SELECT": "Sélectionner"
   },
   "COMPANY": {
     "TITLE": "Entreprise",
@@ -70,11 +70,11 @@
   "FICHE": {
     "TITLE": "Fiche  ",
     "RESPONSIBLENAME": "Nom responsable  ",
-    "UNCERTICIDE": "incerticide",
+    "UNCERTICIDE": "Insecticde",
     "SUPERVISORNAME": "Nom  encadreur",
-    "OBSERVATIONS": "observations",
-    "ARRIVALTIME": "heure d'arivée",
-    "DEPARTURETIME": "heure départ",
+    "OBSERVATIONS": "Observations",
+    "ARRIVALTIME": "Heure d'arivée",
+    "DEPARTURETIME": "Heure départ",
     "FICHESUCCESSTITLE": "Ajouter fiche terminé",
     "FICHESUCCESSBODY": "Votre ajout est terminé",
     "FICHEERREURBODY": "Une erreur s'est produite lors de l'ajout"

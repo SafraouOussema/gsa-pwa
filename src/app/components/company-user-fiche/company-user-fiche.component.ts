@@ -18,11 +18,11 @@ import {  DesinectisationService } from '../../service/desinectisation.service';
 import { CompanyUserService } from '../../service/company-user.service';
 
 @Component({
-  selector: 'app-company-fiche',
-  templateUrl: './company-fiche.component.html',
-  styleUrls: ['./company-fiche.component.css']
+  selector: 'app-company-user-fiche',
+  templateUrl: './company-user-fiche.component.html',
+  styleUrls: ['./company-user-fiche.component.css']
 })
-export class CompanyFicheComponent implements OnInit {
+export class CompanyUserFicheComponent implements OnInit {
 
   companyId: any;
   fiches: any;

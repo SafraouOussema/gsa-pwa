@@ -160,8 +160,7 @@ export class ScanQrcodeComponent implements OnInit {
 
         let scendDate = new Date(data.date + " " + data.time)
 
-        console.log(scendDate)
-
+ 
 
         let ifExist = this.scanCodeList.filter(sc => sc.calendar.id == this.calendarId && sc.locaux.id == findLocalId);
         console.log(ifExist)
@@ -177,10 +176,11 @@ export class ScanQrcodeComponent implements OnInit {
             let def = Math.round(test / minutes)
 
             console.log(Math.round(test / minutes))
-            if (def > 15) {
+            if (def > 2) {
                 this.addScanCode(data,findLocalId);
             } else {
-                console.log("wa9et a9al men 15 min")
+                 this.toasterService.pop('error',  "Il faut attendre 2 min" );
+
             }
 
         }
@@ -209,3 +209,4 @@ export class ScanQrcodeComponent implements OnInit {
     }
 
 }
+ 

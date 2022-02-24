@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class CalendarService {
 
 
-  public API = 'https://gsa-backend.herokuapp.com/application';
+  public API = 'http://localhost:8080/application';
 
   public calendars_API = this.API + '/calendars';
   public calendarsd_API = this.API + '/calendars/';
@@ -27,7 +27,13 @@ export class CalendarService {
     return this.http.get(this.calendarsdate_API+id+"/"+date);
   }
 
-
+  getCalenderCompany(id: any): Observable<any> {
+    return this.http.get(this.calendarsdate_API+"company"+"/"+id);
+  }
+  
+  getCalenderUser(id: any): Observable<any> {
+    return this.http.get(this.calendarsdate_API+id);
+  }
 
   save(niv: any,userid:any,companyid:any): Observable<any> {
     let result: Observable<Object>;

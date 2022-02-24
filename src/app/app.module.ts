@@ -56,9 +56,12 @@ import { ExportFicheComponent } from './components/export-fiche/export-fiche.com
 import { NgQrScannerModule } from 'angular2-qrscanner';
 import { ScanQrcodeComponent } from './components/scan-qrcode/scan-qrcode.component';
 
- import { ZXingScannerModule } from '@zxing/ngx-scanner';
-import { FicheClientComponent } from './components/fiche-client/fiche-client.component'; 
-
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { FicheClientComponent } from './components/fiche-client/fiche-client.component';
+import { CalendarUserComponent } from './components/calendar-user/calendar-user.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { CompanyUserFicheComponent } from './components/company-user-fiche/company-user-fiche.component';
 
 
 
@@ -87,14 +90,16 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     TemplateComponent,
     ExportFicheComponent,
     ScanQrcodeComponent,
-    FicheClientComponent
+    FicheClientComponent,
+    CalendarUserComponent,
+    CompanyUserFicheComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FontAwesomeModule,
-    FormsModule, 
-    MessagesModule, 
+    FormsModule,
+    MessagesModule,
     ConfirmDialogModule,
     ToasterModule,
     QRCodeModule,
@@ -110,6 +115,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ToolbarModule,
     NgQrScannerModule,
     ZXingScannerModule,
+    NgxSpinnerModule,
     BrowserAnimationsModule, // required animations module
     NgxSmartModalModule.forRoot(),
     ToastrModule.forRoot(), // ToastrModule added
@@ -129,7 +135,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     })
   ],
   providers: [httpInterceptorProviders, ToasterService, DatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class AppModule { }
 

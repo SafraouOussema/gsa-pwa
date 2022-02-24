@@ -20,8 +20,10 @@ import { CompanyFicheComponent } from './components/company-fiche/company-fiche.
 import { UsersFicheComponent } from './components/users-fiche/users-fiche.component';
 import { ExportFicheComponent } from './components/export-fiche/export-fiche.component';
 import {  ScanQrcodeComponent } from './components/scan-qrcode/scan-qrcode.component';
+import {  CompanyUserFicheComponent  } from './components/company-user-fiche/company-user-fiche.component';
 
 import { FicheClientComponent } from './components/fiche-client/fiche-client.component'; 
+import { CalendarUserComponent } from './components/calendar-user/calendar-user.component';
 
 const routes: Routes = [
 
@@ -89,6 +91,10 @@ const routes: Routes = [
         path: 'company/template/fiche/:companyid',
         component: CompanyFicheComponent
       }, 
+      {
+        path: 'home/template/fiche/:companyid',
+        component: CompanyUserFicheComponent
+      }, 
        {
         path: 'company/template/fiche/:companyid/template/exportfiche/:calanderid',
         component: ExportFicheComponent
@@ -114,6 +120,9 @@ const routes: Routes = [
       , {
         path: 'users/template/fiche/:userid',
         component: UsersFicheComponent
+      },{
+        path:'calendaruser',
+        component:CalendarUserComponent
       }
 
       // ,{

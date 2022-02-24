@@ -2,11 +2,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyService } from '../../service/company.service';
+import { CompanyUserService } from '../../service/company-user.service';
+
 import { company } from './company';
+import { AuthService } from '../auth/auth.service';
+
+import { SignUpInfo } from '../auth/signup-info';
+
 
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { ToasterService  } from 'angular2-toaster';
+import { ToasterService } from 'angular2-toaster';
 import { TranslateService } from '@ngx-translate/core';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-company',
@@ -34,11 +41,15 @@ export class CompanyComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
   gg: any = {};
-  filterData :any;
+  filterData: any;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private translateService: TranslateService,
     private toasterService: ToasterService,
+    private spinner: NgxSpinnerService,
+    private authService: AuthService,
+    private companyUserService: CompanyUserService,
+
     public ngxSmartModalService: NgxSmartModalService,
     private compnayService: CompanyService) {
 
@@ -60,17 +71,13 @@ export class CompanyComponent implements OnInit {
 
   companys: Array<any>;
   ngOnInit() {
-
     this.loadData();
-
-
-
   }
 
   loadData() {
     this.compnayService.getAll().subscribe(data => {
       this.companys = data;
-      this.filterData = data; 
+      this.filterData = data;
     });
   }
 
@@ -82,22 +89,34 @@ export class CompanyComponent implements OnInit {
     this.Company = new company(
       this.form.label,
       this.form.address);
+    let roles = [];
+    this.spinner.show();
 
-    this.compnayService.save(this.Company).subscribe(
-      data => {
-        this.toasterService.pop('success', this.successToasterTitle, this.successToasterBody);
-        this.gotoList();
-        this.loadData();
-        this.isSignedUp = true;
-        this.isSignUpFailed = false;
-      },
-      error => {
-        console.log(error);
-        this.toasterService.pop('error', this.erreurToasterBody);
-        this.errorMessage = error.error.message;
-        this.isSignUpFailed = true;
-      }
-    );
+
+    var randomPassword = Math.random().toString(36).slice(-12);
+
+    roles.push("company")
+
+    let signupInfo = new SignUpInfo(
+      this.form.firstLastName,
+      this.form.username,
+      this.form.email,
+      randomPassword,
+      roles,
+      this.form.address);
+
+    let promises: Promise<any>[] = [];
+
+    promises.push(this.compnayService.save(this.Company).toPromise());
+    promises.push(this.authService.signUp(signupInfo).toPromise());
+  
+    return Promise.all(promises).then(results => {
+       this.companyUserService.save(null, this.form.username, results[0].id, randomPassword).toPromise().then(res => {
+         this.spinner.hide();
+       })
+
+    })
+ 
   }
 
 
@@ -113,20 +132,20 @@ export class CompanyComponent implements OnInit {
   }
 
   search(term: string) {
-    if(!term) {
+    if (!term) {
       this.filterData = this.companys;
     } else {
-      this.filterData = this.companys.filter(x => 
-         x.label.trim().toLowerCase().includes(term.trim().toLowerCase())
+      this.filterData = this.companys.filter(x =>
+        x.label.trim().toLowerCase().includes(term.trim().toLowerCase())
       );
     }
-    console.log( this.filterData);
+    console.log(this.filterData);
   }
-   
-    
+
+
   clear(table: any) {
     table.clear();
-  
+
   }
 
 

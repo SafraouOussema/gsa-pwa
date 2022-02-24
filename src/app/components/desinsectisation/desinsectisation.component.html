@@ -68,9 +68,9 @@
                                     <th>
                                         accéder
                                     </th>
-                                    <th>
+                                    <!-- <th>
                                         quantité
-                                    </th>
+                                    </th> -->
                                     <th>
                                         {{ 'HEADER.ACTION' | translate }}
                                     </th>
@@ -85,7 +85,7 @@
                                     <td>{{file.locaux.name}}</td>
                                     <td> {{file.produit.pname}}</td>
                                     <td> {{file.acceder}}</td>
-                                    <td> {{file.quantite}}</td>
+                                    <!-- <td> {{file.quantite}}</td> -->
                                     <td>
                                         <a (click)="remove(file.id)"><i class="la la-close delete pointer"></i></a>
                                     </td>
@@ -127,12 +127,7 @@
                 <p *ngIf="selectedlocaux">Local choisi</p>
             </div>
 
-            <div class="col-sm-12">
-                <label for="nresponsable">Quantité</label>
-                <input type="number" class="form-control" name="quantite" [value]="0" [(ngModel)]="form.quantite"
-                    #label="ngModel" required />
-
-            </div>
+            
 
 
 

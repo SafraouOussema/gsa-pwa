@@ -9,7 +9,7 @@ export class ProduitService {
 
 
 
-  public API = 'https://gsa-backend.herokuapp.com/application';
+  public API = 'http://localhost:8080/application';
 
   public company_API = this.API + '/produits';
   public companydelte_API = this.API+'/produits/';

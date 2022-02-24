@@ -1,0 +1,84 @@
+<section class="content">
+    <div class="block-header">
+      <div class="row">
+  
+  
+      </div>
+    </div>
+    <div class="container-fluid">
+  
+      <!-- Advanced Validation -->
+      <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="card">
+  
+            <div class="body">
+              <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                  <h2>{{ 'CALENDAR.TITLE' | translate }}
+                  </h2>
+                </ng-template>
+  
+   
+              </p-toolbar>
+  
+              <p-table #dt2 [value]="niveaus" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
+                [globalFilterFields]="['date','user.name','company.label']" [rowsPerPageOptions]="[05,10,25,50]">
+                <ng-template pTemplate="caption">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <button pButton label="{{ 'Users.Clear' | translate}} " class="p-button-outlined"
+                        icon="pi pi-filter-slash" (click)="clear(dt2, gb)"></button>
+                    </div>
+                    <div class="col-md-3 offset-md-6" style="text-align: right;">
+                      <span class="p-input-icon-left p-ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" #gb (input)="dt2.filterGlobal($event.target.value, 'contains')"
+                          placeholder="{{ 'Users.TableSearch' | translate}}" />
+                      </span>
+                    </div>
+                  </div>
+                </ng-template>
+  
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="date">{{ 'CALENDAR.DATE' | translate }}<p-sortIcon field="date"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="user.name"> {{ 'CALENDAR.EMPLOYED' | translate }} <p-sortIcon field="user.name">
+                      </p-sortIcon>
+                    </th>
+                    <th pSortableColumn="company.label">{{ 'CALENDAR.COMPANY' | translate }}<p-sortIcon
+                        field="company.label"></p-sortIcon>
+                    </th>
+                    <th>
+                      {{ 'HEADER.ACTION' | translate }}
+  
+                    </th>
+  
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-file>
+                  <tr>
+                    <td>{{file.date}}</td>
+                    <td>{{file.user.name}}</td>
+                    <td>{{file.company.label}}</td>
+  
+                    <td>
+                      <a (click)="remove(file.id)"><i class="la la-close delete pointer"></i></a>
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+  
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  </section>

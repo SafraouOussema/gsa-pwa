@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class DesinectisationService {
 
-  public API = 'https://gsa-backend.herokuapp.com/application';
+  public API = 'http://localhost:8080/application';
 
   public calendars_API = this.API + '/desinsectisations/';
   public calendarsd_API = this.API + '/desinsectisations/';

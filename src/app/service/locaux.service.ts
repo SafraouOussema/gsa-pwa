@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class LocauxService  {
 
 
-  public API = 'https://gsa-backend.herokuapp.com/application';
+  public API = 'http://localhost:8080/application';
 
   public locaus_API = this.API + '/locaus';
   public locausd_API = this.API + '/locaus/';

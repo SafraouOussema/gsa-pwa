@@ -113,7 +113,7 @@
     <h1> Ajouter une entreprise </h1>
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class=" col-sm-12">
-            <label for="label"> {{ 'COMPANY.NAME' | translate }}  </label>
+            <label for="label"> Nom d'entreprise </label>
             <input type="text" class="form-control" name="label" [(ngModel)]="form.label" #label="ngModel" required />
             <div *ngIf="f.submitted && label.invalid">
                 <div *ngIf="label.errors.required">{{ 'COMPANY.ADD' | translate }} {{ 'HEADER.ISREQUIRED' | translate }}
@@ -123,13 +123,49 @@
 
         <div class="col-sm-12">
             <label for="address"> {{ 'COMPANY.ADDRESS' | translate }} </label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="form.address" #address="ngModel"
+            <input type="text" class="form-control" name="address" [(ngModel)]="form.address" #address="ngModel"
                 required />
             <div *ngIf="f.submitted && address.invalid">
                 <div *ngIf="address.errors.required">{{ 'COMPANY.ADDRESS' | translate }} {{ 'HEADER.ISREQUIRED' |
                     translate }} </div>
             </div>
         </div>
+
+
+        <div class="col-sm-12">
+            <label for="firstLastName">Nom d'utilisateur  </label>
+            <input type="text" class="form-control" name="firstLastName" [(ngModel)]="form.firstLastName" #firstLastName="ngModel"
+                required />
+            <div *ngIf="f.submitted && firstLastName.invalid">
+                <div *ngIf="firstLastName.errors.required">Nom d'utilisateur  {{ 'HEADER.ISREQUIRED' |
+                    translate }} </div>
+            </div>
+        </div>
+ 
+        <div class="col-sm-12">
+            <label for="username">Pseudo  </label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
+                required />
+            <div *ngIf="f.submitted && username.invalid">
+                <div *ngIf="username.errors.required">Pseudo  {{ 'HEADER.ISREQUIRED' |
+                    translate }} </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <label for="email"> {{ 'MEMBER.EMAIL' | translate }} </label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required
+                email />
+            <div *ngIf="f.submitted && email.invalid">
+                <div *ngIf="email.errors.required"> {{ 'MEMBER.EMAIL' | translate }} {{ 'HEADER.ISREQUIRED' |
+                    translate
+                    }}
+                </div>
+                <div *ngIf="email.errors.email">{{ 'MEMBER.EMAILVALID' | translate }} </div>
+            </div>
+        </div>   
+
+
         <div class="padding-button-add col-sm-12">
             <button class="btn btn-primary">{{ 'HEADER.ADD' | translate }}</button>
             <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
@@ -137,4 +173,4 @@
             </div>
         </div>
     </form>
-</ngx-smart-modal>
+</ngx-smart-modal> 

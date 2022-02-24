@@ -116,15 +116,12 @@ export class DeratisationComponent implements OnInit  {
  
  
    onSubmit() {
-     if(this.form.quantite==0){
-       this.form.acceder = false
-     }else{
-       this.form.acceder=true
-     }
+    this.form.acceder = true
+
      this.Deratisation = new deratisation(
        this.form.acceder,
-       this.form.quantite);
-  
+       0);
+  console.log("test")
  
      this.deratisationService.save(this.Deratisation,this.fi,this.selectedlocaux,this.selectedproduit).subscribe(
        data => {
