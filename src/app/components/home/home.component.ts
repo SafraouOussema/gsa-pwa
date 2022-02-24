@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
         this.currentUser = findUser.id
 
         let k = this.datepipe.transform(myDate, 'yyyy-MM-dd');
-        let newdDate = new Date(k + ' 01:00:00');
+        let newdDate = new Date(k );
         console.log("k",k)
 
         console.log("newdDate",newdDate)
