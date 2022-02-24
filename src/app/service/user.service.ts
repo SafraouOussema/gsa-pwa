@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  public API = 'http://localhost:8080/';
+  public API = 'https://gsa-backend.herokuapp.com/';
 
   private userUrl = 'https://gsa-backend.herokuapp.com/api/test/user';
   private pmUrl = 'https://gsa-backend.herokuapp.com/api/test/pm';

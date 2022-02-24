@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class CalendarService {
 
 
-  public API = 'http://localhost:8080/application';
+  public API = 'https://gsa-backend.herokuapp.com/application';
 
   public calendars_API = this.API + '/calendars';
   public calendarsd_API = this.API + '/calendars/';

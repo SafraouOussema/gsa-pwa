@@ -15,11 +15,9 @@ const httpOptions = {
 })
 export class AuthService {
  
-  //private loginUrl = 'https://gsa-backend.herokuapp.com/api/auth/signin';
- // private signupUrl = 'https://gsa-backend.herokuapp.com/api/auth/register';
-   private signupUrl = 'http://localhost:8080/api/auth/register';
-   private loginUrl = 'http://localhost:8080/api/auth/signin';
-
+  private loginUrl = 'https://gsa-backend.herokuapp.com/api/auth/signin';
+ private signupUrl = 'https://gsa-backend.herokuapp.com/api/auth/register';
+  
   constructor(private http: HttpClient) {
   }
 

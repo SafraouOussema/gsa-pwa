@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class CompanyService {
 
-//http://localhost:8080
+//https://gsa-backend.herokuapp.com/application
   //public API = 'https://gsa-backend.herokuapp.com/application';
-  public API = 'http://localhost:8080/application';
+  public API = 'https://gsa-backend.herokuapp.com/application';
  
   public company_API = this.API + '/companys';
    public companydelte_API = this.API+'/companys/';
