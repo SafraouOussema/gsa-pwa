@@ -66,8 +66,13 @@ export class HomeComponent implements OnInit {
 
         let k = this.datepipe.transform(myDate, 'yyyy-MM-dd');
         let newdDate = new Date(k + ' 01:00:00');
+        console.log("k",k)
+
+        console.log("newdDate",newdDate)
  
         this.calendarService.gettest(findUser.id, newdDate).subscribe(data => {
+          console.log("reponse api",data);
+
           this.niveaus = data;
           console.log(this.niveaus);
         }); 
