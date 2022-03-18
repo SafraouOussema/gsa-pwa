@@ -113,9 +113,11 @@ export class CompanyComponent implements OnInit {
     return Promise.all(promises).then(results => {
        this.companyUserService.save(null, this.form.username, results[0].id, randomPassword).toPromise().then(res => {
          this.spinner.hide();
+         this.toasterService.pop('success', null, 'Entreprise ajoutée avec succès');
+
        })
 
-    })
+    });
  
   }
 

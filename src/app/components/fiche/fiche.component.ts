@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CalendarService } from '../../service/calendar.service';
 import { CompanyService } from '../../service/company.service';
 import { UserService } from '../../service/user.service';
-import {  ScanedCodeService } from '../../service/scaned-code.service';
+import { ScanedCodeService } from '../../service/scaned-code.service';
 
 import { FicheService } from '../../service/fiche.service';
 import { TokenStorageService } from '../auth/token-storage.service';
@@ -57,18 +57,19 @@ export class FicheComponent implements OnInit {
   fiches: Array<any>;
   nope = 0;
 
-  
+
   niveaus: Array<any>;
-  harrive :string ; 
-  hdepart :string ;
-  scendDate:number=0 ;
-  dateList =[];
+  harrive: string;
+  hdepart: string;
+  scendDate: number = 0;
+  dateList = [];
+  isLoading: boolean = false;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private calendarService: CalendarService,
     private companyService: CompanyService,
     private userService: UserService,
-    private scanedCodeService:ScanedCodeService,
+    private scanedCodeService: ScanedCodeService,
     private ficheService: FicheService,
     private datePipe: DatePipe,
     private token: TokenStorageService,
@@ -97,22 +98,22 @@ export class FicheComponent implements OnInit {
   }
 
   loadData() {
-    let promises: Promise<any>[] = []; 
-    this.dateList=[]; 
+    let promises: Promise<any>[] = [];
+    this.dateList = [];
     this.route.params.subscribe(params => {
       this.companyid = params['companyid'];
-      this.selectedcalendar = params['calanderid']; 
+      this.selectedcalendar = params['calanderid'];
     });
 
     promises.push(this.calendarService.getAll().toPromise());
     promises.push(this.companyService.getAll().toPromise());
     promises.push(this.ficheService.getAll().toPromise());
     promises.push(this.scanedCodeService.getScanedCodeByCalanderId(this.selectedcalendar).toPromise())
-   
+
     return Promise.all(promises).then(results => {
 
-      console.log("find user", results) ;
-      
+      console.log("find user", results);
+
       for (let entry of results[0]) {
         if (entry.date == this.datePipe.transform(this.myDate, "yyyy-MM-dd")) {
           if (this.token.getUsername() == entry.user.username) {
@@ -146,17 +147,17 @@ export class FicheComponent implements OnInit {
       }
 
       results[3].forEach(element => {
-        
+
         let firstDate = new Date(element.date + " " + element.time)
         firstDate.getTime();
         let createDate = {
-          date:firstDate,
-          time:firstDate.getTime()
-        } 
-          this.dateList.push(createDate); 
+          date: firstDate,
+          time: firstDate.getTime()
+        }
+        this.dateList.push(createDate);
       });
- 
- 
+      this.isLoading = true;
+
 
     });
 
@@ -170,50 +171,45 @@ export class FicheComponent implements OnInit {
 
     this.dateList.sort((a, b) => (a.color > b.color) ? 1 : -1)
 
-    console.log( this.dateList)
-    this.harrive = this.datePipe.transform(this.dateList[this.dateList.length-1].date, ("shortTime"))
-    this.hdepart = this.datePipe.transform( this.dateList[0].date, ("shortTime"))
+    console.log(this.dateList)
+    this.harrive = this.datePipe.transform(this.dateList[this.dateList.length - 1].date, ("shortTime"))
+    this.hdepart = this.datePipe.transform(this.dateList[0].date, ("shortTime"))
 
 
 
     this.Fiche = new fiche(
       this.form.nresponsable,
       this.form.incerticide,
-      this.form.nencadreur,
+      this.form.nresponsable,
       this.form.observations,
       this.harrive,
       this.hdepart
     );
 
-    this.route.params.subscribe(params => { 
+    this.route.params.subscribe(params => {
       this.selecteduser = params['userid'];
       this.selectedcompany = params['companyid'];
-      this.selectedcalendar = params['calanderid']; 
+      this.selectedcalendar = params['calanderid'];
     });
 
 
-    console.log( this.Fiche)
 
+    this.ficheService.save(this.Fiche, this.selecteduser, this.selectedcompany, this.selectedcalendar).subscribe(
+      data => {
+        this.isLoading = false;
+        this.toasterService.pop('success', this.successToasterTitle, this.successToasterBody);
+        this.isSignedUp = true;
+        this.isSignUpFailed = false;
+        this.ngOnInit();
+      },
+      error => {
+        console.log(error);
+        this.toasterService.pop('error', this.erreurToasterBody);
+        this.errorMessage = error.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
 
-
-      this.ficheService.save(this.Fiche, this.selecteduser, this.selectedcompany, this.selectedcalendar).subscribe(
-        data => {
-          this.toasterService.pop('success', this.successToasterTitle, this.successToasterBody);
-          this.isSignedUp = true;
-          this.isSignUpFailed = false;
-          this.ngOnInit();
-        },
-        error => {
-          console.log(error);
-          this.toasterService.pop('error', this.erreurToasterBody);
-          this.errorMessage = error.error.message;
-          this.isSignUpFailed = true;
-        }
-      );
-
-
-
-    
 
   }
 

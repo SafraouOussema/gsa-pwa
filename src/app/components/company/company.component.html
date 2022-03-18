@@ -16,28 +16,19 @@
     <div class="my-sites-component col-md-12">
         <div class="widget widget-07 has-shadow">
             <div class="widget-header">
-                 
             </div>
             <div class="table-responsive table-scroll padding-right-10"  >
-
-
-
                 <p-toolbar styleClass="p-mb-4">
                     <ng-template pTemplate="left">
                       <h2>Entreprise
                       </h2>
                     </ng-template>
-      
-      
                     <ng-template pTemplate="right">
                       <button pButton pRipple label="{{ 'HEADER.ADD' | translate }}" icon="pi pi-plus"
                         class="p-button-success p-mr-2" (click)="ngxSmartModalService.getModal('myModal').open()"></button>
                       <!-- <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button> -->
                     </ng-template>
                   </p-toolbar>
-
-
-
                 <p-table #dt2 [value]="filterData" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
                     currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
                     [globalFilterFields]="['label','address']" [rowsPerPageOptions]="[10,25,50]">
@@ -57,7 +48,6 @@
                             </div>
                         </div>
                     </ng-template>
-
                     <ng-template pTemplate="header">
                         <tr>
                             <th pSortableColumn="label">{{ 'COMPANY.NAME' | translate }}<p-sortIcon field="label">
@@ -68,7 +58,6 @@
                             <th> List de fiche</th>
                             <th> {{ 'HEADER.ADD' | translate }} </th>
                             <th> {{ 'HEADER.REMOVE' | translate }} </th>
-
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-file>
@@ -76,37 +65,25 @@
                             <td>{{file.label}}</td>
                             <td>{{file.address}}</td>
                             <td>
-                              
                                 <button pButton pRipple label="Afficher" icon="la la-folder-open"
                                 class="p-button-success p-mr-2" [routerLink]="['template/fiche', file.id]"
                                 ></button>
                             </td>
-
                             <td>
-                                
                                 <button pButton pRipple label=" Ajouter des locaux" icon="pi pi-plus"
                                 class="p-button-success p-mr-2" [routerLink]="['template/locaux', file.id]"
                                 ></button>
-                              
-                                
-
                             </td>
-
                             <td>
-
                                 <a (click)="remove(file.id)"><i class="la la-close delete pointer"></i></a>
                             </td>
-
                         </tr>
                     </ng-template>
                 </p-table>
- 
             </div>
         </div>
     </div>
 </div>
-
-
 
 
 <ngx-smart-modal #myModal identifier="myModal">
