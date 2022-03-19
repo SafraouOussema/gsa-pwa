@@ -60,7 +60,6 @@ export class CalendarService {
   }
 
 
-
   remove(delniv: any): Observable<any> {
     let result: Observable<Object>;
 
