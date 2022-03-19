@@ -66,6 +66,7 @@
                     <tr>
                       <th pSortableColumn="[3]"> {{ 'HOME.COMPANY' | translate }} <p-sortIcon field="date"></p-sortIcon>
                       </th>
+                      
                       <th> {{ 'HOME.ACTION' | translate }} </th>
                     </tr>
                   </ng-template>
@@ -88,10 +89,12 @@
               <div  *ngIf="info.authorities == 'ROLE_ADMIN' " >
                 <p-table #dt2 [value]="niveaus" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
                   currentPageReportTemplate="{{ 'Users.PaginationShowing' | translate}} {first} {{ 'Users.PaginationTo' | translate}} {last}  {{ 'Users.PaginationOf' | translate}}  {totalRecords} {{ 'Users.PaginationEntries' | translate}} "
-                  [globalFilterFields]="['company.label' ]" [rowsPerPageOptions]="[10,25,50]">
+                  [globalFilterFields]="['company.label','user.name' ]" [rowsPerPageOptions]="[10,25,50]">
                   <ng-template pTemplate="header">
                     <tr>
                       <th pSortableColumn="company.label"> {{ 'HOME.COMPANY' | translate }} <p-sortIcon field="company.label"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="user.name">Utilisateur <p-sortIcon field="user.name"></p-sortIcon>
                       </th>
                       <th> {{ 'HOME.ACTION' | translate }} </th>
                     </tr>
@@ -99,6 +102,8 @@
                   <ng-template pTemplate="body" let-file>
                     <tr>
                       <td>{{file.company.label}}</td>
+                      <td>{{file.user.name}}</td>
+ 
                         <button pButton [routerLink]="['template/scanqrcode',  file.id,file.company.id,file.user.id]" pRipple
                           label="scanner le code QR" icon="pi pi-plus" class="p-button-success p-mr-2"></button>
                         <button pButton [routerLink]="['template/fiche', file.id,file.company.id,file.user.id]" pRipple

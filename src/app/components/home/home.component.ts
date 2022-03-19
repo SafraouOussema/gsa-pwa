@@ -38,12 +38,12 @@ export class HomeComponent implements OnInit {
     this.isCompany = false;
 
     let finAuthorities =this.token.getAuthorities();
-   
-    if(finAuthorities.length >0){
+    
+    if(finAuthorities.length ==2){
       this.info = {
         token: this.token.getToken(),
         username: this.token.getUsername(),
-        authorities: finAuthorities[1]
+        authorities: "ROLE_ADMIN"
       };
     }else{
       this.info = {
@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
         username: this.token.getUsername(),
         authorities: finAuthorities[0]
       };
+ 
     }
  
 
@@ -62,8 +63,7 @@ export class HomeComponent implements OnInit {
           this.companyInfo = data[0];
           this.calendarService.getCalenderCompany(data[0].company.id).subscribe(res => {
             this.companyUser = res.filter(calender => this.datepipe.transform(calender.date, 'yyyy-MM') == this.datepipe.transform(myDate, 'yyyy-MM'))
-            console.log(this.companyUser);
-          });
+           });
         } 
       })
     } else if (this.info.authorities  =="ROLE_USER"){
@@ -76,16 +76,12 @@ export class HomeComponent implements OnInit {
 
         let k = this.datepipe.transform(myDate, 'yyyy-MM-dd');
         let newdDate = new Date(k );
-        console.log("k",k)
-
-        console.log("newdDate",newdDate)
+      
  
         this.calendarService.gettest(findUser.id, newdDate).subscribe(data => {
-          console.log("reponse api",data);
-
+ 
           this.niveaus = data;
-          console.log(this.niveaus);
-        }); 
+         }); 
       });
 
     }else{
@@ -98,9 +94,7 @@ export class HomeComponent implements OnInit {
 
         let k = this.datepipe.transform(myDate, 'yyyy-MM-dd');
         let newdDate = new Date(k );
-        console.log("k",k)
-
-        console.log("newdDate",newdDate)
+       
  
         this.calendarService.getAll().subscribe(data => {
           
