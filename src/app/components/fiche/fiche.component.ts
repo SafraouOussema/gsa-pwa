@@ -143,7 +143,7 @@ export class FicheComponent implements OnInit {
       if (results[2] != null) {
         for (let entry of results[2]) {
           if (entry.calendar.date == this.datePipe.transform(this.myDate, "yyyy-MM-dd") && entry.company.id == this.companyid) {
-            if (this.token.getUsername() == entry.user.username) {
+            if (this.token.getUsername() == entry.user.username || role[0] ==  "ROLE_ADMIN") {
               this.Fichea.push(entry);
               this.fiches = this.Fichea;
             }
