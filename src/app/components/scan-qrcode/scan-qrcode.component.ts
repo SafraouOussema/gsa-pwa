@@ -176,6 +176,8 @@ export class ScanQrcodeComponent implements OnInit {
             let def = Math.round(test / minutes)
 
             console.log(Math.round(test / minutes))
+            console.log(def);
+            
             if (def > 2) {
                 this.addScanCode(data,findLocalId);
             } else {

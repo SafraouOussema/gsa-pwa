@@ -116,14 +116,16 @@ export class FicheComponent implements OnInit {
 
       for (let entry of results[0]) {
         if (entry.date == this.datePipe.transform(this.myDate, "yyyy-MM-dd")) {
-          if (this.token.getUsername() == entry.user.username) {
+         // if (this.token.getUsername() == entry.user.username) {
 
             this.cal.push(entry);
 
             this.niveaus = this.cal;
-          }
+        //  }
         }
       }
+      console.log(this.niveaus);
+      
 
       for (let entry of this.niveaus) {
         for (let entr of results[1]) {
