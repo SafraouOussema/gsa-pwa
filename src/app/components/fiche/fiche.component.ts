@@ -112,16 +112,19 @@ export class FicheComponent implements OnInit {
 
     return Promise.all(promises).then(results => {
 
-      console.log("find user", results);
+
+ 
+            let role =this.token.getAuthorities()
+            console.log("find user", role); 
 
       for (let entry of results[0]) {
         if (entry.date == this.datePipe.transform(this.myDate, "yyyy-MM-dd")) {
-         // if (this.token.getUsername() == entry.user.username) {
+          if (this.token.getUsername() == entry.user.username || role[0] ==  "ROLE_ADMIN") {
 
             this.cal.push(entry);
 
             this.niveaus = this.cal;
-        //  }
+          }
         }
       }
       console.log(this.niveaus);
