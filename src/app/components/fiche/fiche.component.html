@@ -1,8 +1,7 @@
 <section class="content">
 
     <div class="block-header">
-        <div class="row">
-
+        <div class="row"> 
 
         </div>
     </div>
@@ -39,12 +38,8 @@
                                 </ng-template>
                                 <ng-template pTemplate="header">
                                     <tr>
-                                        <th> {{ 'FICHE.RESPONSIBLENAME' | translate }} </th>
-                                        <th> {{ 'FICHE.UNCERTICIDE' | translate }}
-                                        </th> 
-                                        <th>
-                                            {{ 'FICHE.OBSERVATIONS' | translate }}
-                                        </th>
+                                        <th> {{ 'FICHE.RESPONSIBLENAME' | translate }} </th> 
+                                       
                                         <th>
                                             {{ 'FICHE.ARRIVALTIME' | translate }}
                                         </th>
@@ -64,9 +59,7 @@
                                 </ng-template>
                                 <ng-template pTemplate="body" let-file>
                                     <tr>
-                                        <td>{{file.nresponsable}}</td>
-                                        <td>{{file.incerticide}}</td>
-                                         <td>{{file.observations}}</td>
+                                        <td>{{file.nresponsable}}</td>  
                                         <td>{{file.harrive}}</td>
                                         <td>{{file.hdepart}}</td>
 
@@ -105,25 +98,8 @@
                         <div *ngIf="label.errors.required">Nom responsable is required</div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="incerticide">insecticde</label>
-                    <input type="text" class="form-control" name="label" [(ngModel)]="form.incerticide" #label="ngModel"
-                        required />
-                    <div *ngIf="f.submitted && label.invalid">
-                        <div *ngIf="label.errors.required">insecticde is required</div>
-                    </div> 
-                </div>
             
-                <div class="form-group">
-                    <label for="observations">observations</label>
-                    <input type="text" class="form-control" name="label" [(ngModel)]="form.observations"
-                        #label="ngModel" required />
-                    <div *ngIf="f.submitted && label.invalid">
-                        <div *ngIf="label.errors.required">observations is required</div>
-                    </div>
-                </div>
-
-
+           
                 <div class="form-group">
                     <button class="btn btn-primary">Ajouter</button>
                     <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">

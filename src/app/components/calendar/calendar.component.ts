@@ -79,7 +79,7 @@ export class CalendarComponent implements OnInit {
       this.niveaus = data; 
     });
     this.userService.getAll().subscribe(data => {
-      this.users = data; 
+      this.users = data.filter(user=>user.roles[0].name  != "ROLE_COMPANY"); 
     });
     this.compnayService.getAll().subscribe(data => {
       this.companys = data; 

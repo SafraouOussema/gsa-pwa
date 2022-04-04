@@ -75,8 +75,8 @@ listRole=[];
   }
   loadData() {
     this.userService.getAll().subscribe(data => {
-      this.users = data;
-      this.filterData = data;
+      this.users = data.filter(user=>user.roles[0].name  != "ROLE_COMPANY");
+      this.filterData = data.filter(user=>user.roles[0].name  != "ROLE_COMPANY");
       console.log(data);
     });
   }
@@ -114,7 +114,7 @@ listRole=[];
       this.authService.signUp(this.signupInfo).subscribe(
         data => {
           this.toasterService.pop('success', this.successToasterTitle, this.successToasterBody);
-  
+          this.loadData();
           console.log(data);
           this.isSignedUp = true;
           this.isSignUpFailed = false;
@@ -128,9 +128,7 @@ listRole=[];
         }
       );
     }
-
-
-   
+ 
   }
 
 
