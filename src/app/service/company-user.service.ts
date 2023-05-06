@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CompanyUserService {
-//https://164.132.113.57:8080
-  //public API = 'https://164.132.113.57:8080/application';
-  public API = 'https://164.132.113.57:8080/application';
+//http://164.132.113.57:8080
+  //public API = 'http://164.132.113.57:8080/application';
+  public API = 'http://164.132.113.57:8080/application';
 
   public company_API = this.API + '/companyusers';
    public companydelte_API = this.API+'/companyusers/';

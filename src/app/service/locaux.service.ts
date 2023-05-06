@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class LocauxService  {
 
 
-  public API = 'https://164.132.113.57:8080/application';
+  public API = 'http://164.132.113.57:8080/application';
 
   public locaus_API = this.API + '/locaus';
   public locausd_API = this.API + '/locaus/';
