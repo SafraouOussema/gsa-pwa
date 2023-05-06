@@ -12,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 import {  ScanedCodeService } from '../../service/scaned-code.service';
 
 import { Table } from 'primeng/table';
- 
+
 @Component({
   selector: 'app-deratisation',
   templateUrl: './deratisation.component.html',
@@ -31,11 +31,11 @@ export class DeratisationComponent implements OnInit  {
     * Erreur toaster body of members teams component
     */
    erreurToasterBody: string;
- 
- 
+
+
    public selecteclass  = null;
    Deratisation: deratisation;
- 
+
    constructor(private route: ActivatedRoute,
                private router: Router,
                private zone:NgZone,
@@ -47,7 +47,7 @@ export class DeratisationComponent implements OnInit  {
                private translateService: TranslateService,
                private toasterService: ToasterService,
                public ngxSmartModalService: NgxSmartModalService
-  
+
    )
    { const keys = [
      'DERATIZATION.DERATIZATIONSUCCESSTITLE',
@@ -59,35 +59,41 @@ export class DeratisationComponent implements OnInit  {
         this.successToasterTitle = results[keys[0]];
        this.successToasterBody = results[keys[1]];
        this.erreurToasterBody = results[keys[2]];
- 
+
       }
    );}
- 
+
    gcs: any=null;
    niveaus: any=null;
    produits: any=null;
  fi : any =null ;
    g: any = {};
- 
+
    isSignedUp = false;
    isSignUpFailed = false;
    errorMessage = '';
    delgc : any = {};
- 
+
    gg : any = {};
- 
+
    form: any = {};
- 
- 
+
+
    public selectedproduit = null;
    public selectedlocaux = null;
- 
+
+   public n_post=0;
+   public appats_touches = false;
+   public appats_non_touches = false;
+   public appats_abscents = false;
+   public poste_abscente = false;
+
    ngOnInit() {
      this.loadData();
    }
- 
- 
-   loadData(){    
+
+
+   loadData(){
      let promises: Promise<any>[] = [];
 
      this.route.params.subscribe(params => {
@@ -100,33 +106,36 @@ export class DeratisationComponent implements OnInit  {
        promises.push(this.locauxService.get(comid).toPromise());
        promises.push(this.produitService.getAll().toPromise());
        promises.push(this.scanedCodeService.getScanedCodeByCalanderId(selectedcalendar).toPromise())
- 
+
        return Promise.all(promises).then(results => {
          console.log(results)
-         this.gcs = results[0]; 
+         this.gcs = results[0];
          this.produits = results[2];
          this.niveaus = results[1].filter((v, i) => results[3].findIndex(item => item.locaux.id == v.id) != -1);
-     
+
        });
- 
+
      });
-   
-   } 
- 
- 
- 
+
+   }
+
+
+
    onSubmit() {
     this.form.acceder = true
 
      this.Deratisation = new deratisation(
        this.form.acceder,
-       0);
+       this.n_post,
+       this.appats_touches,this.appats_non_touches,this.appats_abscents,this.poste_abscente
+       );
   console.log("test")
- 
+  console.log(this.Deratisation)
+
      this.deratisationService.save(this.Deratisation,this.fi,this.selectedlocaux,this.selectedproduit).subscribe(
        data => {
          this.toasterService.pop('success', this.successToasterTitle, this.successToasterBody);
- 
+
        this.ngOnInit();
        this.ngOnInit();
          this.isSignedUp = true;
@@ -135,14 +144,14 @@ export class DeratisationComponent implements OnInit  {
        error => {
          console.log(error);
          this.toasterService.pop('error', this.erreurToasterBody);
- 
+
          this.errorMessage = error.error.message;
          this.isSignUpFailed = true;
        }
      );
    }
- 
-  
+
+
    clear(table: Table, globalFilter) {
     globalFilter.value = null;
     table.filters.global = {
@@ -152,16 +161,15 @@ export class DeratisationComponent implements OnInit  {
     table.clear();
   }
 
- 
- 
- 
+
+
+
    remove(form: NgForm) {
      this.deratisationService.remove(form).subscribe(result => {
        this.ngOnInit();
      }, error => console.error(error));
    }
- 
- 
- 
+
+
+
  }
- 

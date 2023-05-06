@@ -12,17 +12,11 @@
                 <div class="card">
                     <div class="body">
 
-
-
-
-
-
                         <p-toolbar styleClass="p-mb-4">
                             <ng-template pTemplate="left">
                                 <h2>{{ 'DERATIZATION.TITLE' | translate }}
                                 </h2>
                             </ng-template>
-
 
                             <ng-template pTemplate="right">
                                 <button pButton pRipple label="{{ 'HEADER.ADD' | translate }}" icon="pi pi-plus"
@@ -67,14 +61,16 @@
                                     <th>
                                         accéder
                                     </th>
-                                    <!-- <th>
-                                        quantité
-                                    </th> -->
+                                    <th>
+                                        Numero de Poste
+                                    </th>
+                                    <th>Appats touches</th>
+                                    <th>Appats non touches</th>
+                                    <th>Appats abscents</th>
+                                    <th>Poste abscente</th>
                                     <th>
                                         {{ 'HEADER.ACTION' | translate }}
                                     </th>
-
-
 
 
                                 </tr>
@@ -84,7 +80,11 @@
                                     <td>{{file.locaux.name}}</td>
                                     <td> {{file.produit.pname}}</td>
                                     <td> {{file.acceder}}</td>
-                                    <!-- <td> {{file.quantite}}</td> -->
+                                   <td> {{file.n_post}}</td>
+                                   <td> {{file.appats_touches}}</td>
+                                   <td> {{file.appats_non_touches}}</td>
+                                   <td> {{file.appats_abscents}}</td>
+                                   <td> {{file.poste_abscente}}</td>
                                     <td>
                                         <a (click)="remove(file.id)"><i class="la la-close delete pointer"></i></a>
                                     </td>
@@ -120,14 +120,33 @@
                 <select [(ngModel)]="selectedlocaux" name="profile" class="form-control selectpicker show-tick">
                     <option *ngFor="let company of niveaus" [value]="company.id">
                         {{ company.name }} </option>
-
                 </select>
                 <p *ngIf="selectedlocaux">Local choisi</p>
             </div>
+            <div class="col-sm-12">
+              <label>Numero de Poste</label>
+              <input class="checkbox-button form-check-input" type="number" name="n_post"  [(ngModel)]="n_post">
+            </div>
 
-            
+            <div class="col-sm-12">
+              <label>Appats touches</label>
+              <input class="checkbox-button form-check-input" type="checkbox" name="mode" [value]="true" [(ngModel)]="appats_touches">
+            </div>
 
+          <div class="col-sm-12">
+            <label>Appats non touches</label>
+            <input class="checkbox-button form-check-input" type="checkbox" name="mode" [value]="true" [(ngModel)]="appats_non_touches">
+          </div>
 
+          <div class="col-sm-12">
+            <label>Appats abscents</label>
+            <input class="checkbox-button form-check-input" type="checkbox" name="mode" [value]="true" [(ngModel)]="appats_abscents">
+          </div>
+
+          <div class="col-sm-12">
+            <label>Poste abscente</label>
+            <input class="checkbox-button form-check-input" type="checkbox" name="mode" [value]="true" [(ngModel)]="poste_abscente">
+          </div>
 
             <div class="padding-button-add col-sm-12">
                 <button class="btn btn-primary">{{ 'HEADER.ADD' | translate }} </button>

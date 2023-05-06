@@ -68,9 +68,6 @@
                                         Heure depart
                                     </th>
                                     <th>
-                                        Fiche
-                                    </th> 
-                                    <th>
                                         Fiche client
                                     </th>
                                 </tr>
@@ -84,10 +81,6 @@
 
                                     <td>{{file.harrive}}</td>
                                     <td>{{file.hdepart}}</td>
-                                    <td>
-                                        <button pButton [routerLink]="['template/exportfiche', file.calendar.id]"
-                                            pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
-                                    </td>
                                     <td>
                                         <button pButton [routerLink]="['template/ficheclient', file.calendar.id]"
                                             pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>

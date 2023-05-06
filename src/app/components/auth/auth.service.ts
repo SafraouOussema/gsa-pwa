@@ -14,10 +14,10 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
- 
-  private loginUrl = 'https://gsa-backend.herokuapp.com/api/auth/signin';
- private signupUrl = 'https://gsa-backend.herokuapp.com/api/auth/register';
-  
+
+  private loginUrl = 'http://164.132.113.57:8080/api/auth/signin';
+ private signupUrl = 'http://164.132.113.57:8080/api/auth/register';
+
   constructor(private http: HttpClient) {
   }
 

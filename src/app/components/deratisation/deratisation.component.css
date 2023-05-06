@@ -1,22 +1,26 @@
 table{
 
     text-align: center;
-  
+
   }
-  
-  
+
+  .checkbox-button{
+    margin-left: 11%;
+  }
+
+
   .modal-dialog{
     z-index: 99999999999;
   }
   .modal-backdrop.show {
     display:none !important;
   }
-  
-  
+
+
   body.stop-scrolling {
     height: 100%;
     overflow: hidden; }
-  
+
   .sweet-overlay {
     background-color: black;
     /* IE8 */
@@ -30,7 +34,7 @@ table{
     bottom: 0;
     display: none;
     z-index: 10000; }
-  
+
   .sweet-alert {
     background-color: white;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -379,7 +383,7 @@ table{
     border: none;
     background-position: center center;
     background-repeat: no-repeat; }
-  
+
   /*
    * Animations
    */
@@ -396,7 +400,7 @@ table{
     100% {
       transform: scale(1);
       -webkit-transform: scale(1); } }
-  
+
   @keyframes showSweetAlert {
     0% {
       transform: scale(0.7);
@@ -410,7 +414,7 @@ table{
     100% {
       transform: scale(1);
       -webkit-transform: scale(1); } }
-  
+
   @-webkit-keyframes hideSweetAlert {
     0% {
       transform: scale(1);
@@ -418,7 +422,7 @@ table{
     100% {
       transform: scale(0.5);
       -webkit-transform: scale(0.5); } }
-  
+
   @keyframes hideSweetAlert {
     0% {
       transform: scale(1);
@@ -426,87 +430,87 @@ table{
     100% {
       transform: scale(0.5);
       -webkit-transform: scale(0.5); } }
-  
+
   @-webkit-keyframes slideFromTop {
     0% {
       top: 0%; }
     100% {
       top: 50%; } }
-  
+
   @keyframes slideFromTop {
     0% {
       top: 0%; }
     100% {
       top: 50%; } }
-  
+
   @-webkit-keyframes slideToTop {
     0% {
       top: 50%; }
     100% {
       top: 0%; } }
-  
+
   @keyframes slideToTop {
     0% {
       top: 50%; }
     100% {
       top: 0%; } }
-  
+
   @-webkit-keyframes slideFromBottom {
     0% {
       top: 70%; }
     100% {
       top: 50%; } }
-  
+
   @keyframes slideFromBottom {
     0% {
       top: 70%; }
     100% {
       top: 50%; } }
-  
+
   @-webkit-keyframes slideToBottom {
     0% {
       top: 50%; }
     100% {
       top: 70%; } }
-  
+
   @keyframes slideToBottom {
     0% {
       top: 50%; }
     100% {
       top: 70%; } }
-  
+
   .showSweetAlert[data-animation=pop] {
     -webkit-animation: showSweetAlert 0.3s;
     animation: showSweetAlert 0.3s; }
-  
+
   .showSweetAlert[data-animation=none] {
     -webkit-animation: none;
     animation: none; }
-  
+
   .showSweetAlert[data-animation=slide-from-top] {
     -webkit-animation: slideFromTop 0.3s;
     animation: slideFromTop 0.3s; }
-  
+
   .showSweetAlert[data-animation=slide-from-bottom] {
     -webkit-animation: slideFromBottom 0.3s;
     animation: slideFromBottom 0.3s; }
-  
+
   .hideSweetAlert[data-animation=pop] {
     -webkit-animation: hideSweetAlert 0.2s;
     animation: hideSweetAlert 0.2s; }
-  
+
   .hideSweetAlert[data-animation=none] {
     -webkit-animation: none;
     animation: none; }
-  
+
   .hideSweetAlert[data-animation=slide-from-top] {
     -webkit-animation: slideToTop 0.4s;
     animation: slideToTop 0.4s; }
-  
+
   .hideSweetAlert[data-animation=slide-from-bottom] {
     -webkit-animation: slideToBottom 0.3s;
     animation: slideToBottom 0.3s; }
-  
+
   @-webkit-keyframes animateSuccessTip {
     0% {
       width: 0;
@@ -528,7 +532,7 @@ table{
       width: 25px;
       left: 14px;
       top: 45px; } }
-  
+
   @keyframes animateSuccessTip {
     0% {
       width: 0;
@@ -550,7 +554,7 @@ table{
       width: 25px;
       left: 14px;
       top: 45px; } }
-  
+
   @-webkit-keyframes animateSuccessLong {
     0% {
       width: 0;
@@ -568,7 +572,7 @@ table{
       width: 47px;
       right: 8px;
       top: 38px; } }
-  
+
   @keyframes animateSuccessLong {
     0% {
       width: 0;
@@ -586,7 +590,7 @@ table{
       width: 47px;
       right: 8px;
       top: 38px; } }
-  
+
   @-webkit-keyframes rotatePlaceholder {
     0% {
       transform: rotate(-45deg);
@@ -600,7 +604,7 @@ table{
     100% {
       transform: rotate(-405deg);
       -webkit-transform: rotate(-405deg); } }
-  
+
   @keyframes rotatePlaceholder {
     0% {
       transform: rotate(-45deg);
@@ -614,19 +618,19 @@ table{
     100% {
       transform: rotate(-405deg);
       -webkit-transform: rotate(-405deg); } }
-  
+
   .animateSuccessTip {
     -webkit-animation: animateSuccessTip 0.75s;
     animation: animateSuccessTip 0.75s; }
-  
+
   .animateSuccessLong {
     -webkit-animation: animateSuccessLong 0.75s;
     animation: animateSuccessLong 0.75s; }
-  
+
   .sa-icon.sa-success.animate::after {
     -webkit-animation: rotatePlaceholder 4.25s ease-in;
     animation: rotatePlaceholder 4.25s ease-in; }
-  
+
   @-webkit-keyframes animateErrorIcon {
     0% {
       transform: rotateX(100deg);
@@ -636,7 +640,7 @@ table{
       transform: rotateX(0deg);
       -webkit-transform: rotateX(0deg);
       opacity: 1; } }
-  
+
   @keyframes animateErrorIcon {
     0% {
       transform: rotateX(100deg);
@@ -646,11 +650,11 @@ table{
       transform: rotateX(0deg);
       -webkit-transform: rotateX(0deg);
       opacity: 1; } }
-  
+
   .animateErrorIcon {
     -webkit-animation: animateErrorIcon 0.5s;
     animation: animateErrorIcon 0.5s; }
-  
+
   @-webkit-keyframes animateXMark {
     0% {
       transform: scale(0.4);
@@ -671,7 +675,7 @@ table{
       -webkit-transform: scale(1);
       margin-top: 0;
       opacity: 1; } }
-  
+
   @keyframes animateXMark {
     0% {
       transform: scale(0.4);
@@ -692,75 +696,75 @@ table{
       -webkit-transform: scale(1);
       margin-top: 0;
       opacity: 1; } }
-  
+
   .animateXMark {
     -webkit-animation: animateXMark 0.5s;
     animation: animateXMark 0.5s; }
-  
+
   @-webkit-keyframes pulseWarning {
     0% {
       border-color: #F8D486; }
     100% {
       border-color: #F8BB86; } }
-  
+
   @keyframes pulseWarning {
     0% {
       border-color: #F8D486; }
     100% {
       border-color: #F8BB86; } }
-  
+
   .pulseWarning {
     -webkit-animation: pulseWarning 0.75s infinite alternate;
     animation: pulseWarning 0.75s infinite alternate; }
-  
+
   @-webkit-keyframes pulseWarningIns {
     0% {
       background-color: #F8D486; }
     100% {
       background-color: #F8BB86; } }
-  
+
   @keyframes pulseWarningIns {
     0% {
       background-color: #F8D486; }
     100% {
       background-color: #F8BB86; } }
-  
+
   .pulseWarningIns {
     -webkit-animation: pulseWarningIns 0.75s infinite alternate;
     animation: pulseWarningIns 0.75s infinite alternate; }
-  
+
   @-webkit-keyframes rotate-loading {
     0% {
       transform: rotate(0deg); }
     100% {
       transform: rotate(360deg); } }
-  
+
   @keyframes rotate-loading {
     0% {
       transform: rotate(0deg); }
     100% {
       transform: rotate(360deg); } }
-  
+
   /* Internet Explorer 9 has some special quirks that are fixed here */
   /* The icons are not animated. */
   /* This file is automatically merged into sweet-alert.min.js through Gulp */
   /* Error icon */
   .sweet-alert .sa-icon.sa-error .sa-line.sa-left {
     -ms-transform: rotate(45deg) \9; }
-  
+
   .sweet-alert .sa-icon.sa-error .sa-line.sa-right {
     -ms-transform: rotate(-45deg) \9; }
-  
+
   /* Success icon */
   .sweet-alert .sa-icon.sa-success {
     border-color: transparent\9; }
-  
+
   .sweet-alert .sa-icon.sa-success .sa-line.sa-tip {
     -ms-transform: rotate(45deg) \9; }
-  
+
   .sweet-alert .sa-icon.sa-success .sa-line.sa-long {
     -ms-transform: rotate(-45deg) \9; }
-  
+
   /*!
    * Load Awesome v1.1.0 (http://github.danielcardoso.net/load-awesome/)
    * Copyright 2015 Daniel Cardoso <@DanielCardoso>
@@ -772,25 +776,25 @@ table{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
-  
+
   .la-ball-fall {
     display: block;
     font-size: 0;
     color: #fff; }
-  
+
   .la-ball-fall.la-dark {
     color: #333; }
-  
+
   .la-ball-fall > div {
     display: inline-block;
     float: none;
     background-color: currentColor;
     border: 0 solid currentColor; }
-  
+
   .la-ball-fall {
     width: 54px;
     height: 18px; }
-  
+
   .la-ball-fall > div {
     width: 10px;
     height: 10px;
@@ -801,52 +805,52 @@ table{
     -moz-animation: ball-fall 1s ease-in-out infinite;
     -o-animation: ball-fall 1s ease-in-out infinite;
     animation: ball-fall 1s ease-in-out infinite; }
-  
+
   .la-ball-fall > div:nth-child(1) {
     -webkit-animation-delay: -200ms;
     -moz-animation-delay: -200ms;
     -o-animation-delay: -200ms;
     animation-delay: -200ms; }
-  
+
   .la-ball-fall > div:nth-child(2) {
     -webkit-animation-delay: -100ms;
     -moz-animation-delay: -100ms;
     -o-animation-delay: -100ms;
     animation-delay: -100ms; }
-  
+
   .la-ball-fall > div:nth-child(3) {
     -webkit-animation-delay: 0ms;
     -moz-animation-delay: 0ms;
     -o-animation-delay: 0ms;
     animation-delay: 0ms; }
-  
+
   .la-ball-fall.la-sm {
     width: 26px;
     height: 8px; }
-  
+
   .la-ball-fall.la-sm > div {
     width: 4px;
     height: 4px;
     margin: 2px; }
-  
+
   .la-ball-fall.la-2x {
     width: 108px;
     height: 36px; }
-  
+
   .la-ball-fall.la-2x > div {
     width: 20px;
     height: 20px;
     margin: 8px; }
-  
+
   .la-ball-fall.la-3x {
     width: 162px;
     height: 54px; }
-  
+
   .la-ball-fall.la-3x > div {
     width: 30px;
     height: 30px;
     margin: 12px; }
-  
+
   /*
    * Animation
    */
@@ -871,7 +875,7 @@ table{
       opacity: 0;
       -webkit-transform: translateY(145%);
       transform: translateY(145%); } }
-  
+
   @-moz-keyframes ball-fall {
     0% {
       opacity: 0;
@@ -893,7 +897,7 @@ table{
       opacity: 0;
       -moz-transform: translateY(145%);
       transform: translateY(145%); } }
-  
+
   @-o-keyframes ball-fall {
     0% {
       opacity: 0;
@@ -915,7 +919,7 @@ table{
       opacity: 0;
       -o-transform: translateY(145%);
       transform: translateY(145%); } }
-  
+
   @keyframes ball-fall {
     0% {
       opacity: 0;
@@ -945,5 +949,5 @@ table{
       -moz-transform: translateY(145%);
       -o-transform: translateY(145%);
       transform: translateY(145%); } }
-  
-  
+
+

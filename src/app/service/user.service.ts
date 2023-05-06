@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  public API = 'https://gsa-backend.herokuapp.com/';
+  public API = 'http://164.132.113.57:8080/';
 
-  private userUrl = 'https://gsa-backend.herokuapp.com/api/test/user';
-  private pmUrl = 'https://gsa-backend.herokuapp.com/api/test/pm';
-  private adminUrl = 'https://gsa-backend.herokuapp.com/api/test/admin';
- 
+  private userUrl = 'http://164.132.113.57:8080/api/test/user';
+  private pmUrl = 'http://164.132.113.57:8080/api/test/pm';
+  private adminUrl = 'http://164.132.113.57:8080/api/test/admin';
+
   constructor(private http: HttpClient) { }
 
   getUserBoard(): Observable<string> {
