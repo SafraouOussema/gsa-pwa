@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ScanedCodeService {
 
-  public API = 'https://164.132.113.57:8080/application';
+  public API = 'http://164.132.113.57:8080/application';
 
   public calendars_API = this.API + '/scanedCode/';
   public calendarsd_API = this.API + '/scanedCode/';

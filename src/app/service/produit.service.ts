@@ -9,7 +9,7 @@ export class ProduitService {
 
 
 
-  public API = 'https://164.132.113.57:8080/application';
+  public API = 'http://164.132.113.57:8080/application';
 
   public company_API = this.API + '/produits';
   public companydelte_API = this.API+'/produits/';
