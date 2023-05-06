@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class DesinectisationService {
 
-  public API = 'http://164.132.113.57:8080/application';
+  public API = 'https://164.132.113.57:8080/application';
 
   public calendars_API = this.API + '/desinsectisations/';
   public calendarsd_API = this.API + '/desinsectisations/';

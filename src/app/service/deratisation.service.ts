@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class DeratisationService {
 
 
-  public API = 'http://164.132.113.57:8080/application';
+  public API = 'https://164.132.113.57:8080/application';
 
   public calendars_API = this.API + '/deratisations/';
   public calendarsd_API = this.API + '/deratisations/';
